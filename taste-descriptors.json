@@ -1,0 +1,1451 @@
+{
+ "version": 1,
+ "builtAt": "2026-11-01",
+ "source": "replay-2026.json top 20 (rank-weighted, positive-only) + web research (critics / social), quotes attributed",
+ "rule": "Replay rank is only a positive boost (replayBoost: rank1=3.5 … rank>=100=0.35, floor 0.2); low rank never lowers a weight; no mean-centering.",
+ "genreWeights": {
+  "K-Pop": 9.895,
+  "嘻哈/说唱": 43.909,
+  "R&B/灵魂乐": 6.809,
+  "拉丁都市音乐": 3.341
+ },
+ "descriptors": {
+  "rage": {
+   "weight": 6.968,
+   "songs": [
+    1,
+    2
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Yeat",
+    "Playboi Carti",
+    "Lil Uzi Vert",
+    "Sik-K",
+    "Lil Moshpit",
+    "Destroy Lonely",
+    "Ken Carson"
+   ],
+   "tags": [
+    "rage",
+    "plugg",
+    "hyperpop"
+   ],
+   "bpm": [
+    140,
+    170
+   ],
+   "norm": 0.323
+  },
+  "sample-flip nostalgia": {
+   "weight": 3.5,
+   "songs": [
+    1
+   ],
+   "genres": [
+    "嘻哈/说唱",
+    "K-Pop"
+   ],
+   "artists": [
+    "Sik-K",
+    "Lil Moshpit"
+   ],
+   "tags": [
+    "korean hip hop"
+   ],
+   "norm": 0.162
+  },
+  "pop-melodic hook": {
+   "weight": 3.5,
+   "songs": [
+    1
+   ],
+   "genres": [
+    "K-Pop",
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Sik-K"
+   ],
+   "tags": [
+    "k-pop"
+   ],
+   "norm": 0.162
+  },
+  "k-hiphop": {
+   "weight": 10.277,
+   "songs": [
+    1,
+    4,
+    5
+   ],
+   "genres": [
+    "嘻哈/说唱",
+    "K-Pop",
+    "R&B/灵魂乐"
+   ],
+   "artists": [
+    "Sik-K",
+    "Lil Moshpit",
+    "Molly Yam",
+    "Kid Milli",
+    "GroovyRoom"
+   ],
+   "tags": [
+    "korean hip hop",
+    "k-hip hop",
+    "korean"
+   ],
+   "norm": 0.476
+  },
+  "heavy distorted 808s": {
+   "weight": 3.468,
+   "songs": [
+    2
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Yeat",
+    "Travis Scott"
+   ],
+   "tags": [
+    "trap",
+    "rage"
+   ],
+   "bpm": [
+    130,
+    165
+   ],
+   "norm": 0.161
+  },
+  "ethereal/futuristic synths": {
+   "weight": 3.468,
+   "songs": [
+    2
+   ],
+   "genres": [
+    "嘻哈/说唱",
+    "R&B/灵魂乐"
+   ],
+   "artists": [
+    "Yeat",
+    "The Weeknd",
+    "Playboi Carti"
+   ],
+   "tags": [
+    "cloud rap",
+    "synthwave",
+    "alternative r&b"
+   ],
+   "norm": 0.161
+  },
+  "slurred auto-tuned delivery": {
+   "weight": 3.468,
+   "songs": [
+    2
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Yeat",
+    "Gunna"
+   ],
+   "tags": [
+    "trap",
+    "mumble rap"
+   ],
+   "norm": 0.161
+  },
+  "electronic-rap crossover": {
+   "weight": 3.468,
+   "songs": [
+    2
+   ],
+   "genres": [
+    "嘻哈/说唱",
+    "电子音乐"
+   ],
+   "artists": [
+    "Yeat"
+   ],
+   "tags": [
+    "hyperpop",
+    "electronic"
+   ],
+   "norm": 0.161
+  },
+  "ambient/airy synths": {
+   "weight": 6.364,
+   "songs": [
+    3,
+    19
+   ],
+   "genres": [
+    "R&B/灵魂乐",
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "The Weeknd",
+    "Travis Scott",
+    "Playboi Carti"
+   ],
+   "tags": [
+    "cloud rap",
+    "alternative r&b",
+    "psychedelic"
+   ],
+   "norm": 0.295
+  },
+  "auto-tuned crooning": {
+   "weight": 6.395,
+   "songs": [
+    3,
+    18
+   ],
+   "genres": [
+    "R&B/灵魂乐",
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "The Weeknd",
+    "Don Toliver",
+    "Travis Scott"
+   ],
+   "tags": [
+    "contemporary r&b",
+    "alternative r&b",
+    "auto-tune"
+   ],
+   "norm": 0.296
+  },
+  "bouncy bass": {
+   "weight": 3.436,
+   "songs": [
+    3
+   ],
+   "genres": [
+    "嘻哈/说唱",
+    "R&B/灵魂乐"
+   ],
+   "artists": [
+    "The Weeknd",
+    "Playboi Carti"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "norm": 0.159
+  },
+  "melodic trap": {
+   "weight": 21.605,
+   "songs": [
+    3,
+    12,
+    14,
+    15,
+    16,
+    18,
+    20
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Gunna",
+    "Lil Baby",
+    "Lil Uzi Vert",
+    "Don Toliver",
+    "Travis Scott",
+    "The Weeknd"
+   ],
+   "tags": [
+    "trap",
+    "melodic rap",
+    "cloud rap"
+   ],
+   "bpm": [
+    120,
+    170
+   ],
+   "norm": 1
+  },
+  "nocturnal R&B": {
+   "weight": 3.436,
+   "songs": [
+    3
+   ],
+   "genres": [
+    "R&B/灵魂乐"
+   ],
+   "artists": [
+    "The Weeknd"
+   ],
+   "tags": [
+    "alternative r&b",
+    "contemporary r&b"
+   ],
+   "norm": 0.159
+  },
+  "hyperpop-leaning beats": {
+   "weight": 6.777,
+   "songs": [
+    4,
+    5
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Molly Yam"
+   ],
+   "tags": [
+    "hyperpop",
+    "korean hip hop"
+   ],
+   "norm": 0.314
+  },
+  "viral short-form hook": {
+   "weight": 3.405,
+   "songs": [
+    4
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Molly Yam",
+    "Don Miguelo"
+   ],
+   "tags": [],
+   "norm": 0.158
+  },
+  "addictive hook": {
+   "weight": 3.373,
+   "songs": [
+    5
+   ],
+   "genres": [
+    "R&B/灵魂乐",
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Molly Yam"
+   ],
+   "tags": [
+    "korean hip hop"
+   ],
+   "norm": 0.156
+  },
+  "dembow": {
+   "weight": 3.341,
+   "songs": [
+    6
+   ],
+   "genres": [
+    "拉丁都市音乐"
+   ],
+   "artists": [
+    "Don Miguelo"
+   ],
+   "tags": [
+    "dembow",
+    "reggaeton",
+    "latin urban"
+   ],
+   "bpm": [
+    110,
+    130
+   ],
+   "norm": 0.155
+  },
+  "chant hook": {
+   "weight": 3.341,
+   "songs": [
+    6
+   ],
+   "genres": [
+    "拉丁都市音乐"
+   ],
+   "artists": [
+    "Don Miguelo"
+   ],
+   "tags": [
+    "dembow"
+   ],
+   "norm": 0.155
+  },
+  "brass/marching-band trap": {
+   "weight": 3.309,
+   "songs": [
+    7
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Travis Scott"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "norm": 0.153
+  },
+  "hard 808 trap": {
+   "weight": 3.309,
+   "songs": [
+    7
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Travis Scott"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "bpm": [
+    130,
+    170
+   ],
+   "norm": 0.153
+  },
+  "techno-club K-pop": {
+   "weight": 6.395,
+   "songs": [
+    8,
+    13
+   ],
+   "genres": [
+    "K-Pop"
+   ],
+   "artists": [
+    "aespa",
+    "BABYMONSTER",
+    "LE SSERAFIM",
+    "IVE"
+   ],
+   "tags": [
+    "k-pop",
+    "electropop",
+    "dance-pop",
+    "techno"
+   ],
+   "bpm": [
+    118,
+    140
+   ],
+   "norm": 0.296
+  },
+  "spoken/chant hooks": {
+   "weight": 6.395,
+   "songs": [
+    8,
+    13
+   ],
+   "genres": [
+    "K-Pop"
+   ],
+   "artists": [
+    "aespa",
+    "BABYMONSTER"
+   ],
+   "tags": [
+    "k-pop"
+   ],
+   "norm": 0.296
+  },
+  "throbbing bass": {
+   "weight": 3.277,
+   "songs": [
+    8
+   ],
+   "genres": [
+    "K-Pop"
+   ],
+   "artists": [
+    "aespa"
+   ],
+   "tags": [
+    "electropop",
+    "techno"
+   ],
+   "norm": 0.152
+  },
+  "chengdu trap / c-rap": {
+   "weight": 9.641,
+   "songs": [
+    9,
+    10,
+    11
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "DIGI GHETTO",
+    "Asen",
+    "艾志恒Asen",
+    "mac ova seas",
+    "Higher Brothers",
+    "Masiwei"
+   ],
+   "tags": [
+    "chinese hip hop",
+    "c-rap",
+    "chengdu"
+   ],
+   "script": "cjk",
+   "norm": 0.446
+  },
+  "club-friendly trap": {
+   "weight": 6.459,
+   "songs": [
+    9,
+    10
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "DIGI GHETTO"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "norm": 0.299
+  },
+  "inventive flows": {
+   "weight": 3.245,
+   "songs": [
+    9
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "DIGI GHETTO"
+   ],
+   "tags": [],
+   "norm": 0.15
+  },
+  "emotional melodic rap": {
+   "weight": 3.182,
+   "songs": [
+    11
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Asen",
+    "艾志恒Asen"
+   ],
+   "tags": [
+    "chinese hip hop"
+   ],
+   "norm": 0.147
+  },
+  "r&b-jazz tinged": {
+   "weight": 3.182,
+   "songs": [
+    11
+   ],
+   "genres": [
+    "R&B/灵魂乐",
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Asen"
+   ],
+   "tags": [
+    "jazz rap",
+    "r&b"
+   ],
+   "norm": 0.147
+  },
+  "knocking drums": {
+   "weight": 3.15,
+   "songs": [
+    12
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "bpm": [
+    130,
+    170
+   ],
+   "norm": 0.146
+  },
+  "candy-coated synth trap": {
+   "weight": 3.15,
+   "songs": [
+    12
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "tags": [
+    "trap",
+    "emo rap"
+   ],
+   "norm": 0.146
+  },
+  "trap drops": {
+   "weight": 3.118,
+   "songs": [
+    13
+   ],
+   "genres": [
+    "K-Pop"
+   ],
+   "artists": [
+    "BABYMONSTER"
+   ],
+   "tags": [
+    "k-pop"
+   ],
+   "norm": 0.144
+  },
+  "sing-rap flow": {
+   "weight": 3.086,
+   "songs": [
+    14
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Baby",
+    "Gunna",
+    "Drake"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "norm": 0.143
+  },
+  "emo/psychedelic minor-key trap": {
+   "weight": 3.055,
+   "songs": [
+    15
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Uzi Vert",
+    "Travis Scott"
+   ],
+   "tags": [
+    "emo rap",
+    "psychedelic",
+    "cloud rap"
+   ],
+   "norm": 0.141
+  },
+  "sing-along hook": {
+   "weight": 3.055,
+   "songs": [
+    15
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "tags": [
+    "emo rap"
+   ],
+   "norm": 0.141
+  },
+  "hypnotic synth loop": {
+   "weight": 3.023,
+   "songs": [
+    16
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "tags": [
+    "cloud rap"
+   ],
+   "norm": 0.14
+  },
+  "beat switch": {
+   "weight": 2.991,
+   "songs": [
+    17
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Drake",
+    "Travis Scott"
+   ],
+   "tags": [],
+   "norm": 0.138
+  },
+  "flex-moan sing-rap": {
+   "weight": 2.991,
+   "songs": [
+    17
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Drake"
+   ],
+   "tags": [
+    "pop rap"
+   ],
+   "norm": 0.138
+  },
+  "bouncy groove": {
+   "weight": 2.991,
+   "songs": [
+    17
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Drake"
+   ],
+   "tags": [
+    "hip hop"
+   ],
+   "norm": 0.138
+  },
+  "syrupy synths": {
+   "weight": 2.959,
+   "songs": [
+    18
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Don Toliver",
+    "Travis Scott"
+   ],
+   "tags": [
+    "psychedelic",
+    "trap"
+   ],
+   "norm": 0.137
+  },
+  "gritty rock guitar": {
+   "weight": 2.959,
+   "songs": [
+    18
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Don Toliver"
+   ],
+   "tags": [
+    "rap rock",
+    "rock"
+   ],
+   "norm": 0.137
+  },
+  "guitar-loop trap": {
+   "weight": 5.823,
+   "songs": [
+    19,
+    20
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Gunna",
+    "Travis Scott"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "norm": 0.27
+  },
+  "dark psychedelic": {
+   "weight": 2.927,
+   "songs": [
+    19
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Travis Scott"
+   ],
+   "tags": [
+    "psychedelic",
+    "trap"
+   ],
+   "norm": 0.135
+  },
+  "booming 808s": {
+   "weight": 2.895,
+   "songs": [
+    20
+   ],
+   "genres": [
+    "嘻哈/说唱"
+   ],
+   "artists": [
+    "Gunna",
+    "Lil Baby"
+   ],
+   "tags": [
+    "trap"
+   ],
+   "bpm": [
+    120,
+    170
+   ],
+   "norm": 0.134
+  }
+ },
+ "songs": [
+  {
+   "rank": 1,
+   "trackId": "1802528268",
+   "title": "LOV3 (feat. Bryan Chase & Okasian)",
+   "artists": [
+    "Sik-K",
+    "Lil Moshpit"
+   ],
+   "genre": "K-Pop",
+   "rankBoost": 3.5,
+   "melody": "rage beat flipping a 2000s K-hip-hop pop melody (Epik High \"Love Love Love\"); dense hook, relaxed flow; bright, flashy, nostalgic",
+   "descriptors": [
+    "rage",
+    "sample-flip nostalgia",
+    "pop-melodic hook",
+    "k-hiphop"
+   ],
+   "sources": [
+    {
+     "phrase": "rage-based sound … vibrant and flashy",
+     "source": "Korean Music Awards 2026 jury (Lee Ah-rim, 음악취향Y), via NamuWiki EN",
+     "url": "https://en.namu.wiki/w/LOV3"
+    },
+    {
+     "phrase": "dense hook, leisurely flow",
+     "source": "Korean Music Awards 2026 jury via NamuWiki EN",
+     "url": "https://en.namu.wiki/w/LOV3"
+    },
+    {
+     "phrase": "Hip Hop • Rage",
+     "source": "NamuWiki genre field",
+     "url": "https://en.namu.wiki/w/LOV3"
+    },
+    {
+     "phrase": "강렬하면서 중독적인 '레이지' 풍의 비트 (intense, addictive rage-style beat)",
+     "source": "HIPHOPLE user review",
+     "url": "https://hiphople.com/kboard/31948509"
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "trackId": "1830346719",
+   "title": "COMË N GO",
+   "artists": [
+    "Yeat"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.468,
+   "melody": "145 BPM A-minor trap; heavy distorted 808s under ethereal futuristic synths; subdued, slurred, chant-like hook; dark, hypnotic",
+   "descriptors": [
+    "heavy distorted 808s",
+    "ethereal/futuristic synths",
+    "slurred auto-tuned delivery",
+    "electronic-rap crossover",
+    "rage"
+   ],
+   "sources": [
+    {
+     "phrase": "heavy, distorted 808 basslines contrasted with ethereal, futuristic synthesizers",
+     "source": "SongSense analysis",
+     "url": "https://songsense.io/yeat/come-n-go"
+    },
+    {
+     "phrase": "bass-heavy Hip-Hop track at 145 BPM",
+     "source": "Mixgraph",
+     "url": "https://www.mixgraph.io/tracks/yeat-com-n-go"
+    },
+    {
+     "phrase": "mastered the electronic x rap crossover",
+     "source": "Musicboard user review",
+     "url": "https://musicboard.app/edm_glazer_725/review/track/come-n-go/dangerous-summer/yeat/"
+    },
+    {
+     "phrase": "Smooth, lazy delivery by Yeat",
+     "source": "ratingsmusic.com user take",
+     "url": "https://ratingsmusic.com/song/yeat/come-n-go-3"
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "trackId": "1770380890",
+   "title": "Timeless",
+   "artists": [
+    "The Weeknd",
+    "Playboi Carti"
+   ],
+   "genre": "R&B/灵魂乐",
+   "rankBoost": 3.436,
+   "melody": "languid trap-pop; airy/frigid ambient synths over bouncing bass; Weeknd falsetto croon vs Carti multi-voice rap; nocturnal, glossy",
+   "descriptors": [
+    "ambient/airy synths",
+    "auto-tuned crooning",
+    "bouncy bass",
+    "melodic trap",
+    "nocturnal R&B"
+   ],
+   "sources": [
+    {
+     "phrase": "Seamless and languid … a sweet pixelated slink. Call it cosmic lounge music",
+     "source": "Pitchfork track review",
+     "url": "https://pitchfork.com/reviews/tracks/the-weeknd-playboi-carti-timeless/"
+    },
+    {
+     "phrase": "ambient opening synths … a frigid Gesaffelstein composition",
+     "source": "Music Daily",
+     "url": "https://musicdaily.com/playboi-carti-joins-the-weeknd-for-the-shining-timeless/"
+    },
+    {
+     "phrase": "Mike Dean's airy synths and Pharrell's bouncing bass",
+     "source": "Mark Chinapen, Medium review",
+     "url": "https://markiemark1887.medium.com/timeless-by-the-weeknd-feat-playboi-carti-song-review-c48d5fe948c4"
+    },
+    {
+     "phrase": "bassy, catchy … soaring vocals",
+     "source": "HotNewHipHop",
+     "url": "https://www.hotnewhiphop.com/845996-the-weeknd-playboi-carti-timeless-stream"
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "trackId": "1795613156",
+   "title": "Burning slow (feat. Sik-K & GGM LIL DRAGON) [Remix]",
+   "artists": [
+    "Molly Yam"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.405,
+   "melody": "Korean hip-hop/hyperpop-leaning remix; repetitive short-form hook (\"burning slow\"); late-night longing, sing-rap",
+   "descriptors": [
+    "hyperpop-leaning beats",
+    "k-hiphop",
+    "viral short-form hook"
+   ],
+   "sources": [
+    {
+     "phrase": "하이퍼 팝 기반 비트 (hyperpop-based beats) — album-level, Tiktoksta; \"Burning slow\" named as the early-2025 wave",
+     "source": "IZM album review (정기엽)",
+     "url": "https://www.izm.co.kr/posts?id=33405",
+     "scope": "album"
+    }
+   ],
+   "note": "No song-level critic review found for the Remix; descriptor is album-level."
+  },
+  {
+   "rank": 5,
+   "trackId": "1806335849",
+   "title": "WET (feat. Kid Milli)",
+   "artists": [
+    "Molly Yam"
+   ],
+   "genre": "R&B/灵魂乐",
+   "rankBoost": 3.373,
+   "melody": "K-R&B/hip-hop single; addictive hook and build; playful, bouncy, sensual",
+   "descriptors": [
+    "addictive hook",
+    "k-hiphop",
+    "hyperpop-leaning beats"
+   ],
+   "sources": [
+    {
+     "phrase": "중독적인 훅과 전개 (addictive hook and development)",
+     "source": "IZM album review (정기엽)",
+     "url": "https://www.izm.co.kr/posts?id=33405"
+    },
+    {
+     "phrase": "Banger",
+     "source": "r/khiphop comment",
+     "url": "https://www.reddit.com/r/khiphop/comments/1jr5tnl/molly_yam_ft_kid_milli_wet/"
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "trackId": "1708289078",
+   "title": "Y Qué Fue?",
+   "artists": [
+    "Don Miguelo"
+   ],
+   "genre": "拉丁都市音乐",
+   "rankBoost": 3.341,
+   "melody": "Dominican dembow; mambo-influenced rhythm; chanted repetitive chorus; party/viral",
+   "descriptors": [
+    "dembow",
+    "chant hook"
+   ],
+   "sources": [
+    {
+     "phrase": "Dominican dembow genre, utilizing mambo-influenced patterns",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Y_Que_Fue%3F"
+    },
+    {
+     "phrase": "built around a repetitive chorus",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Y_Que_Fue%3F"
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "trackId": "1792323326",
+   "title": "4X4",
+   "artists": [
+    "Travis Scott"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.309,
+   "melody": "hard trap over processed marching-band brass (Tay Keith); barked chorus; aggressive, stadium",
+   "descriptors": [
+    "brass/marching-band trap",
+    "hard 808 trap"
+   ],
+   "sources": [
+    {
+     "phrase": "awash in marching band brass",
+     "source": "UPROXX",
+     "url": "https://uproxx.com/music/travis-scott-4x4-tay-keith/"
+    },
+    {
+     "phrase": "\"Four-by-four, I tint my windows up,\" he barks on the chorus",
+     "source": "UPROXX",
+     "url": "https://uproxx.com/music/travis-scott-4x4-tay-keith/"
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "trackId": "1772214981",
+   "title": "Whiplash",
+   "artists": [
+    "aespa"
+   ],
+   "genre": "K-Pop",
+   "rankBoost": 3.277,
+   "melody": "techno/tech-house K-pop; throbbing bassline, four-on-the-floor; spoken-word hooks + melodic bridge; confident, runway",
+   "descriptors": [
+    "techno-club K-pop",
+    "spoken/chant hooks",
+    "throbbing bass"
+   ],
+   "sources": [
+    {
+     "phrase": "techno-inspired, dance club bangers",
+     "source": "Asian Junkie review",
+     "url": "https://www.asianjunkie.com/2024/10/21/review-aespa-continue-to-successfully-embody-their-concept-on-the-unrelenting-whiplash/"
+    },
+    {
+     "phrase": "Driven by a throbbing … bassline … feeling like a runway song",
+     "source": "Asian Junkie review",
+     "url": "https://www.asianjunkie.com/2024/10/21/review-aespa-continue-to-successfully-embody-their-concept-on-the-unrelenting-whiplash/"
+    },
+    {
+     "phrase": "spoken-word type hooks",
+     "source": "Asian Junkie review",
+     "url": "https://www.asianjunkie.com/2024/10/21/review-aespa-continue-to-successfully-embody-their-concept-on-the-unrelenting-whiplash/"
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "trackId": "1850696686",
+   "title": "芳草地",
+   "artists": [
+    "DIGI GHETTO",
+    "mac ova seas",
+    "Asen",
+    "KIV"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.245,
+   "melody": "Chengdu crew trap posse cut; club-friendly beat, rotating inventive flows; playful, local slang",
+   "descriptors": [
+    "chengdu trap / c-rap",
+    "club-friendly trap",
+    "inventive flows"
+   ],
+   "sources": [
+    {
+     "phrase": "club-friendly, the beats are good, and the flows are very inventive … like a new-gen Higher Brothers",
+     "source": "ChinaTalk (Duoduodiliao) on 芳草地",
+     "url": "https://www.chinatalk.media/p/chinese-hip-hop-annual-roundup"
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "trackId": "1850697060",
+   "title": "成都一夜",
+   "artists": [
+    "DIGI GHETTO",
+    "mac ova seas",
+    "Asen",
+    "Mula Sakee"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.214,
+   "melody": "Chengdu crew trap; night-out hook \"One night in 成都\"; relaxed flex, local references",
+   "descriptors": [
+    "chengdu trap / c-rap",
+    "club-friendly trap"
+   ],
+   "sources": [
+    {
+     "phrase": "club-friendly … flows are very inventive (said of the DIGI GHETTO mixtape)",
+     "source": "ChinaTalk (Duoduodiliao)",
+     "url": "https://www.chinatalk.media/p/chinese-hip-hop-annual-roundup",
+     "scope": "mixtape"
+    }
+   ],
+   "note": "No song-level critic text found; mixtape-level descriptor only."
+  },
+  {
+   "rank": 11,
+   "trackId": "1636244021",
+   "title": "土黑娃 (feat. Thomeboydontkill)",
+   "artists": [
+    "Asen"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.182,
+   "melody": "melodic, emotional C-rap; R&B/jazz/pop colours; restrained, poetry-reading-like but heated flow; small-town narrative",
+   "descriptors": [
+    "emotional melodic rap",
+    "chengdu trap / c-rap",
+    "r&b-jazz tinged"
+   ],
+   "sources": [
+    {
+     "phrase": "R&Bやジャズ、ポップスを融合させたエモーショナルなサウンド (emotional sound fusing R&B, jazz and pop)",
+     "source": "Spincoaster feature on Asen",
+     "url": "https://spincoaster.com/feature-asen",
+     "scope": "artist"
+    },
+    {
+     "phrase": "ポエトリーリーディングのように抑制的で、鋭く熱を帯びた独自のフロウ (restrained like poetry reading, sharp and heated flow)",
+     "source": "Spincoaster feature",
+     "url": "https://spincoaster.com/feature-asen",
+     "scope": "artist"
+    },
+    {
+     "phrase": "“土黑娃” was a big hit on short-video platforms",
+     "source": "Spincoaster feature",
+     "url": "https://spincoaster.com/feature-asen"
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "trackId": "1313365311",
+   "title": "Sauce It Up",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.15,
+   "melody": "Uzi rage-era trap; knocking drums, sweet/infectious synth beat; swift flow; party energy",
+   "descriptors": [
+    "knocking drums",
+    "candy-coated synth trap",
+    "melodic trap"
+   ],
+   "sources": [
+    {
+     "phrase": "Uzi's beats are rather infectious",
+     "source": "DJBooth 1-listen review",
+     "url": "https://djbooth.net/features/2017-08-25-lil-uzi-vert-luv-is-rage-2-album-review/"
+    },
+    {
+     "phrase": "the way his drums come in is KNOCKING … Cotton candy production you just want to lay in",
+     "source": "DJBooth",
+     "url": "https://djbooth.net/features/2017-08-25-lil-uzi-vert-luv-is-rage-2-album-review/"
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "trackId": "6774417990",
+   "title": "SUGAR HONEY ICE TEA",
+   "artists": [
+    "BABYMONSTER"
+   ],
+   "genre": "K-Pop",
+   "rankBoost": 3.118,
+   "melody": "electro/club K-pop with trap drops; sing-talk chant chorus; low melody, swagger",
+   "descriptors": [
+    "techno-club K-pop",
+    "spoken/chant hooks",
+    "trap drops"
+   ],
+   "sources": [
+    {
+     "phrase": "sing-talking … over club beats",
+     "source": "The Bias List review",
+     "url": "https://thebiaslist.com/2026/06/07/song-review-babymonster-sugar-honey-ice-tea/"
+    },
+    {
+     "phrase": "propulsive electro beats … momentum-killing trap drops",
+     "source": "The Bias List review",
+     "url": "https://thebiaslist.com/2026/06/07/song-review-babymonster-sugar-honey-ice-tea/"
+    },
+    {
+     "phrase": "let down by its lack of melody",
+     "source": "The Bias List review",
+     "url": "https://thebiaslist.com/2026/06/07/song-review-babymonster-sugar-honey-ice-tea/"
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "trackId": "1384782409",
+   "title": "Life Goes On (feat. Gunna & Lil Uzi Vert)",
+   "artists": [
+    "Lil Baby"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.086,
+   "melody": "Atlanta melodic trap; sing-rap flow over a smooth beat; three-verse posse; boastful but mellow",
+   "descriptors": [
+    "melodic trap",
+    "sing-rap flow"
+   ],
+   "sources": [
+    {
+     "phrase": "signature melodic flow as he sing-raps",
+     "source": "Wikipedia (citing HotNewHipHop)",
+     "url": "https://en.wikipedia.org/wiki/Life_Goes_On_(Lil_Baby_song)"
+    },
+    {
+     "phrase": "subtle melodies in his delivery elevate his blistering flow",
+     "source": "HipHopDX (via Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/Life_Goes_On_(Lil_Baby_song)"
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "trackId": "1313365750",
+   "title": "XO TOUR Llif3",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.055,
+   "melody": "emo-trap; slightly psychedelic minor-key beat (TM88); nihilistic sing-along hook; dark yet anthemic",
+   "descriptors": [
+    "emo/psychedelic minor-key trap",
+    "melodic trap",
+    "sing-along hook"
+   ],
+   "sources": [
+    {
+     "phrase": "slightly psychedelic minor key production",
+     "source": "Pitchfork track review",
+     "url": "https://pitchfork.com/reviews/tracks/18818-lil-uzi-vert-xo-tour-llif3/"
+    },
+    {
+     "phrase": "nihilistic hook",
+     "source": "Pitchfork track review",
+     "url": "https://pitchfork.com/reviews/tracks/18818-lil-uzi-vert-xo-tour-llif3/"
+    },
+    {
+     "phrase": "contagious tune",
+     "source": "DJBooth",
+     "url": "https://djbooth.net/features/2017-08-25-lil-uzi-vert-luv-is-rage-2-album-review/"
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "trackId": "1313366296",
+   "title": "20 Min",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 3.023,
+   "melody": "single hypnotic synth loop + simple drums (C Note), melodic auto-tuned Uzi; bittersweet, driving",
+   "descriptors": [
+    "hypnotic synth loop",
+    "melodic trap"
+   ],
+   "sources": [
+    {
+     "phrase": "it's really just a loop … a synth that I created",
+     "source": "Honorable C.N.O.T.E. to Complex",
+     "url": "https://www.complex.com/music/a/eric-diep/honorable-c-note-interview-on-producing-for-lil-uzi-vert-gucci-mane-trippie-redd"
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "trackId": "6769568603",
+   "title": "National Treasures",
+   "artists": [
+    "Drake"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 2.991,
+   "melody": "two-part Drake cut; beat switch into a vibrant hip-hop groove (Wraith9, \"OK\" sample); flex-moan sing-rap",
+   "descriptors": [
+    "beat switch",
+    "flex-moan sing-rap",
+    "bouncy groove"
+   ],
+   "sources": [
+    {
+     "phrase": "a vibrant hip-hop groove over which Drake delivers an unbroken stream of flex-moan bars",
+     "source": "Dazed",
+     "url": "https://www.dazeddigital.com/music/article/70263/1/the-5-best-songs-from-drake-s-new-albums-plural-iceman-habibti-maid-of-honour"
+    },
+    {
+     "phrase": "heralded by his now-iconic “OK” sample",
+     "source": "Dazed",
+     "url": "https://www.dazeddigital.com/music/article/70263/1/the-5-best-songs-from-drake-s-new-albums-plural-iceman-habibti-maid-of-honour"
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "trackId": "1871258330",
+   "title": "E85",
+   "artists": [
+    "Don Toliver"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 2.959,
+   "melody": "rap-rock trap; syrupy synths, strings, gritty guitar; elastic crooning; desert-highway, psychedelic",
+   "descriptors": [
+    "melodic trap",
+    "syrupy synths",
+    "gritty rock guitar",
+    "auto-tuned crooning"
+   ],
+   "sources": [
+    {
+     "phrase": "all thick layers of syrupy synths and bold rhymes",
+     "source": "Clash (via Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/E85_(song)"
+    },
+    {
+     "phrase": "gritty guitar textures cutting through the haze",
+     "source": "Exclaim! (via Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/E85_(song)"
+    },
+    {
+     "phrase": "a melodic trap mix … addictive",
+     "source": "Billboard (via Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/E85_(song)"
+    },
+    {
+     "phrase": "effortless collage of genres",
+     "source": "Pitchfork (via Wikipedia)",
+     "url": "https://en.wikipedia.org/wiki/E85_(song)"
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "trackId": "1481874619",
+   "title": "HIGHEST IN THE ROOM",
+   "artists": [
+    "Travis Scott"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 2.927,
+   "melody": "plucky acoustic-guitar loop trap; dark \"drugged-out\" Mike Dean synth outro; hummed melodic hook",
+   "descriptors": [
+    "guitar-loop trap",
+    "ambient/airy synths",
+    "dark psychedelic"
+   ],
+   "sources": [
+    {
+     "phrase": "looping plucky acoustic guitar strums",
+     "source": "WRSU (Rutgers Radio) review",
+     "url": "https://wrsu.org/travis-scott-highest-in-the-room-single-review/"
+    },
+    {
+     "phrase": "that “drugged-out” and dark aesthetic … building synths",
+     "source": "WRSU review",
+     "url": "https://wrsu.org/travis-scott-highest-in-the-room-single-review/"
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "trackId": "1456667851",
+   "title": "Sold Out Dates (feat. Lil Baby)",
+   "artists": [
+    "Gunna"
+   ],
+   "genre": "嘻哈/说唱",
+   "rankBoost": 2.895,
+   "melody": "Atlanta melodic trap; booming 808 + guitar loops; melodic designer-flex hook; smooth",
+   "descriptors": [
+    "booming 808s",
+    "guitar-loop trap",
+    "melodic trap"
+   ],
+   "sources": [
+    {
+     "phrase": "a \"booming 808\" with guitar loops in a trap beat",
+     "source": "Wikipedia (citing HotNewHipHop)",
+     "url": "https://en.wikipedia.org/wiki/Sold_Out_Dates"
+    }
+   ]
+  }
+ ],
+ "genreWeightsNorm": {
+  "K-Pop": 0.225,
+  "嘻哈/说唱": 1,
+  "R&B/灵魂乐": 0.155,
+  "拉丁都市音乐": 0.076
+ }
+}

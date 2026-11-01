@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音乐bot · 每日推荐</title>
+<meta name="theme-color" content="#141210">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23141210'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23c9a46a'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23141210'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="28" cy="34" r="24" class="mk-disc"/>
+      <circle cx="28" cy="34" r="17" class="mk-groove"/>
+      <circle cx="28" cy="34" r="11" class="mk-groove"/>
+      <circle cx="28" cy="34" r="6" class="mk-label"/>
+      <path d="M56 6 L56 18 L40 34" class="mk-arm"/>
+      <circle cx="56" cy="6" r="3" class="mk-pivot"/>
+    </svg>
+    <div><h1>音乐bot</h1><small>每日一张唱片</small></div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab" data-view="today">今日</button>
+    <button class="tab" data-view="taste">口味</button>
+    <button class="tab" data-view="history">历史</button>
+    <button class="tab" data-view="settings">设置</button>
+  </nav>
+</header>
+
+<main>
+  <div id="notice" class="notice" hidden></div>
+
+  <!-- 今日推荐 -->
+  <section id="view-today" class="view">
+    <div class="view-head">
+      <div><h2>今日推荐</h2><p class="muted" id="today-date"></p></div>
+      <button id="refresh" class="ghost">换一批</button>
+    </div>
+    <dl id="stats" class="stats" hidden>
+      <div><dt>今日</dt><dd id="st-today" class="odo"></dd></div>
+      <div><dt>喜欢</dt><dd id="st-likes" class="odo"></dd></div>
+      <div><dt>平均评分</dt><dd id="st-avg" class="odo"></dd></div>
+      <div><dt>听歌天数</dt><dd id="st-days" class="odo"></dd></div>
+    </dl>
+    <p id="status" class="status" aria-live="polite"></p>
+    <ol id="today-list" class="cards"></ol>
+    <details id="timeline" class="timeline" open hidden>
+      <summary><span>动态</span><span class="muted small" id="tl-count"></span></summary>
+      <ol id="tl-list" class="tl"></ol>
+    </details>
+  </section>
+
+  <!-- 口味 / 引导 -->
+  <section id="view-taste" class="view">
+    <h2>你喜欢什么样的音乐？</h2>
+    <p class="muted">选几个流派、歌手和歌曲作为起点。之后每一次喜欢、不喜欢和评分都会让推荐更懂你。</p>
+
+    <h3>流派</h3>
+    <div id="genre-chips" class="chips"></div>
+
+    <h3>歌手</h3>
+    <form class="search" data-kind="artist"><input type="search" placeholder="搜索歌手，例如 周杰伦、Gunna" autocomplete="off"><button class="ghost">搜索</button></form>
+    <ul class="results" id="artist-results"></ul>
+    <div id="artist-picked" class="chips picked"></div>
+
+    <h3>歌曲</h3>
+    <form class="search" data-kind="song"><input type="search" placeholder="搜索歌曲，例如 晴天" autocomplete="off"><button class="ghost">搜索</button></form>
+    <p id="song-note" class="search-note" role="status" hidden></p>
+    <ul class="results" id="song-results"></ul>
+    <div id="song-picked" class="chips picked"></div>
+
+    <div class="actions-row">
+      <button id="save-taste" class="primary">保存，生成今日推荐</button>
+      <button id="import-replay" class="ghost" hidden>读取 Replay 2026 作为口味</button>
+    </div>
+    <p id="taste-status" class="muted"></p>
+
+    <div id="bans" hidden>
+      <h3>不想听的歌手</h3>
+      <p class="muted">点名字即可恢复推荐。</p>
+      <div id="ban-list" class="chips picked"></div>
+    </div>
+  </section>
+
+  <!-- 历史 -->
+  <section id="view-history" class="view">
+    <h2>历史</h2>
+    <div id="history-list"></div>
+  </section>
+
+  <!-- 设置 -->
+  <section id="view-settings" class="view">
+    <h2>设置</h2>
+    <label class="field"><span>每日推荐数量</span><input id="set-count" type="number" min="3" max="30"></label>
+    <label class="field"><span>Apple Music 地区（storefront）</span><select id="set-storefront"><option value="us">美国（US）</option></select></label>
+    <h3>数据</h3>
+    <p class="muted">所有数据只保存在本浏览器（localStorage）。可导出为 JSON 备份，或在其他设备导入。</p>
+    <div class="actions-row">
+      <button id="save-settings" class="primary">保存设置</button>
+      <button id="export" class="ghost">导出 JSON</button>
+      <label class="ghost filebtn">导入 JSON<input id="import" type="file" accept="application/json,.json" hidden></label>
+      <button id="reset" class="ghost danger">清空全部</button>
+    </div>
+    <p id="engine-info" class="muted small"></p>
+  </section>
+</main>
+
+<footer class="muted small">音乐bot · 链接在 Apple Music 中打开 · 30 秒试听由 Apple 提供</footer>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<audio id="player" preload="none"></audio>
+<script src="recommender.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>

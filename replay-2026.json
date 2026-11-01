@@ -1,0 +1,1613 @@
+{
+ "source": "https://music.apple.com/us/playlist/replay-2026/pl.rp-VQ11I2gBOEVB",
+ "owner": "Apple Music for Lee L",
+ "tracks": [
+  {
+   "rank": 1,
+   "title": "LOV3 (feat. Bryan Chase & Okasian)",
+   "artists": [
+    "Sik-K",
+    "Lil Moshpit"
+   ],
+   "album": "K-FLIP+",
+   "trackId": "1802528268",
+   "duration_ms": 236240,
+   "url": "https://music.apple.com/us/album/lov3-feat-bryan-chase-okasian/1802528260?i=1802528268",
+   "genre": "K-Pop",
+   "releaseDate": "2025-03-17T12:00:00Z",
+   "artistName": "Sik-K & Lil Moshpit",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 2,
+   "title": "COMË N GO",
+   "artists": [
+    "Yeat"
+   ],
+   "album": "DANGEROUS SUMMER",
+   "trackId": "1830346719",
+   "duration_ms": 198621,
+   "url": "https://music.apple.com/us/album/com%C3%AB-n-go/1830346710?i=1830346719",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-07-31T12:00:00Z",
+   "artistName": "Yeat",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 3,
+   "title": "Timeless",
+   "artists": [
+    "The Weeknd",
+    "Playboi Carti"
+   ],
+   "album": "Timeless - Single",
+   "trackId": "1770380890",
+   "duration_ms": 256000,
+   "url": "https://music.apple.com/us/album/timeless/1770380869?i=1770380890",
+   "genre": "R&B/Soul",
+   "releaseDate": "2024-09-27T12:00:00Z",
+   "artistName": "The Weeknd & Playboi Carti",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 4,
+   "title": "Burning slow (feat. Sik-K & GGM LIL DRAGON) [Remix]",
+   "artists": [
+    "Molly Yam"
+   ],
+   "album": "Burning slow (feat. Sik-K & GGM LIL DRAGON) [Remix] - Single",
+   "trackId": "1795613156",
+   "duration_ms": 170013,
+   "url": "https://music.apple.com/us/album/burning-slow-feat-sik-k-ggm-lil-dragon-remix/1795613154?i=1795613156",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-02-12T12:00:00Z",
+   "artistName": "Molly Yam",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 5,
+   "title": "WET (feat. Kid Milli)",
+   "artists": [
+    "Molly Yam"
+   ],
+   "album": "WET (feat. Kid Milli) - Single",
+   "trackId": "1806335849",
+   "duration_ms": 200000,
+   "url": "https://music.apple.com/us/album/wet-feat-kid-milli/1806335847?i=1806335849",
+   "genre": "R&B/Soul",
+   "releaseDate": "2025-04-04T12:00:00Z",
+   "artistName": "Molly Yam",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 6,
+   "title": "Y Qué Fue?",
+   "artists": [
+    "Don Miguelo"
+   ],
+   "album": "Y Qué Fue? - Single",
+   "trackId": "1708289078",
+   "duration_ms": 163759,
+   "url": "https://music.apple.com/us/album/y-qu%C3%A9-fue/1708289077?i=1708289078",
+   "genre": "Urbano latino",
+   "releaseDate": "2020-07-29T12:00:00Z",
+   "artistName": "Don Miguelo",
+   "inCN": true,
+   "cnGenre": "拉丁都市音乐"
+  },
+  {
+   "rank": 7,
+   "title": "4X4",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "4X4 - Single",
+   "trackId": "1792323326",
+   "duration_ms": 190582,
+   "url": "https://music.apple.com/us/album/4x4/1792323325?i=1792323326",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-01-24T12:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 8,
+   "title": "Whiplash",
+   "artists": [
+    "aespa"
+   ],
+   "album": "Whiplash - The 5th Mini Album - EP",
+   "trackId": "1772214981",
+   "duration_ms": 183227,
+   "url": "https://music.apple.com/us/album/whiplash/1772214980?i=1772214981",
+   "genre": "K-Pop",
+   "releaseDate": "2024-10-21T12:00:00Z",
+   "artistName": "aespa",
+   "inCN": false
+  },
+  {
+   "rank": 9,
+   "title": "芳草地",
+   "artists": [
+    "DIGI GHETTO",
+    "mac ova seas",
+    "Asen",
+    "KIV"
+   ],
+   "album": "DIGI GHETTO",
+   "trackId": "1850696686",
+   "duration_ms": 262396,
+   "url": "https://music.apple.com/us/album/%E8%8A%B3%E8%8D%89%E5%9C%B0/1850696619?i=1850696686",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-01-07T12:00:00Z",
+   "artistName": "DIGI GHETTO, mac ova seas, Asen & KIV",
+   "inCN": false
+  },
+  {
+   "rank": 10,
+   "title": "成都一夜",
+   "artists": [
+    "DIGI GHETTO",
+    "mac ova seas",
+    "Asen",
+    "Mula Sakee"
+   ],
+   "album": "DIGI GHETTO",
+   "trackId": "1850697060",
+   "duration_ms": 182027,
+   "url": "https://music.apple.com/us/album/%E6%88%90%E9%83%BD%E4%B8%80%E5%A4%9C/1850696619?i=1850697060",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-01-07T12:00:00Z",
+   "artistName": "DIGI GHETTO, mac ova seas, Asen & Mula Sakee",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 11,
+   "title": "土黑娃 (feat. Thomeboydontkill)",
+   "artists": [
+    "Asen"
+   ],
+   "album": "土黑娃 (feat. Thomeboydontkill) - Single",
+   "trackId": "1636244021",
+   "duration_ms": 243556,
+   "url": "https://music.apple.com/us/album/%E5%9C%9F%E9%BB%91%E5%A8%83-feat-thomeboydontkill/1636244014?i=1636244021",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-07-18T12:00:00Z",
+   "artistName": "Asen",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 12,
+   "title": "Sauce It Up",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "Luv Is Rage 2 (Deluxe)",
+   "trackId": "1313365311",
+   "duration_ms": 207039,
+   "url": "https://music.apple.com/us/album/sauce-it-up/1313364174?i=1313365311",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2017-08-25T12:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 13,
+   "title": "SUGAR HONEY ICE TEA",
+   "artists": [
+    "BABYMONSTER"
+   ],
+   "album": "SUGAR HONEY ICE TEA - Single",
+   "trackId": "6774417990",
+   "duration_ms": 178033,
+   "url": "https://music.apple.com/us/album/sugar-honey-ice-tea/6774417988?i=6774417990",
+   "genre": "K-Pop",
+   "releaseDate": "2026-06-07T12:00:00Z",
+   "artistName": "BABYMONSTER",
+   "inCN": false
+  },
+  {
+   "rank": 14,
+   "title": "Life Goes On (feat. Gunna & Lil Uzi Vert)",
+   "artists": [
+    "Lil Baby"
+   ],
+   "album": "Harder Than Ever",
+   "trackId": "1384782409",
+   "duration_ms": 247055,
+   "url": "https://music.apple.com/us/album/life-goes-on-feat-gunna-lil-uzi-vert/1384782173?i=1384782409",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-05-18T12:00:00Z",
+   "artistName": "Lil Baby",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 15,
+   "title": "XO TOUR Llif3",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "Luv Is Rage 2 (Deluxe)",
+   "trackId": "1313365750",
+   "duration_ms": 182707,
+   "url": "https://music.apple.com/us/album/xo-tour-llif3/1313364174?i=1313365750",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2017-02-26T12:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 16,
+   "title": "20 Min",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "Luv Is Rage 2 (Deluxe)",
+   "trackId": "1313366296",
+   "duration_ms": 220587,
+   "url": "https://music.apple.com/us/album/20-min/1313364174?i=1313366296",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2017-08-25T12:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 17,
+   "title": "National Treasures",
+   "artists": [
+    "Drake"
+   ],
+   "album": "ICEMAN",
+   "trackId": "6769568603",
+   "duration_ms": 200831,
+   "url": "https://music.apple.com/us/album/national-treasures/6769568449?i=6769568603",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-05-15T12:00:00Z",
+   "artistName": "Drake",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 18,
+   "title": "E85",
+   "artists": [
+    "Don Toliver"
+   ],
+   "album": "OCTANE",
+   "trackId": "1871258330",
+   "duration_ms": 153182,
+   "url": "https://music.apple.com/us/album/e85/1871258329?i=1871258330",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-01-22T12:00:00Z",
+   "artistName": "Don Toliver",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 19,
+   "title": "HIGHEST IN THE ROOM",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "HIGHEST IN THE ROOM - Single",
+   "trackId": "1481874619",
+   "duration_ms": 175721,
+   "url": "https://music.apple.com/us/album/highest-in-the-room/1481874613?i=1481874619",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2019-10-04T12:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 20,
+   "title": "Sold Out Dates (feat. Lil Baby)",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "Sold Out Dates (feat. Lil Baby) - Single",
+   "trackId": "1456667851",
+   "duration_ms": 166368,
+   "url": "https://music.apple.com/us/album/sold-out-dates-feat-lil-baby/1456667605?i=1456667851",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-04-16T07:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 21,
+   "title": "HYPNOTIZE",
+   "artists": [
+    "XG"
+   ],
+   "album": "THE CORE - 核",
+   "trackId": "1861009528",
+   "duration_ms": 170625,
+   "url": "https://music.apple.com/us/album/hypnotize/1861009513?i=1861009528",
+   "genre": "Pop",
+   "releaseDate": "2026-01-23T12:00:00Z",
+   "artistName": "XG",
+   "inCN": false
+  },
+  {
+   "rank": 22,
+   "title": "FaSHioN",
+   "artists": [
+    "CORTIS"
+   ],
+   "album": "COLOR OUTSIDE THE LINES - EP",
+   "trackId": "1832031345",
+   "duration_ms": 174653,
+   "url": "https://music.apple.com/us/album/fashion/1832031331?i=1832031345",
+   "genre": "K-Pop",
+   "releaseDate": "2025-09-08T12:00:00Z",
+   "artistName": "CORTIS",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 23,
+   "title": "What Did I Miss?",
+   "artists": [
+    "Drake"
+   ],
+   "album": "ICEMAN",
+   "trackId": "6769568607",
+   "duration_ms": 194324,
+   "url": "https://music.apple.com/us/album/what-did-i-miss/6769568449?i=6769568607",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-07-05T12:00:00Z",
+   "artistName": "Drake",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 24,
+   "title": "Had Enough (feat. Offset & Quavo)",
+   "artists": [
+    "Don Toliver"
+   ],
+   "album": "Heaven Or Hell",
+   "trackId": "1502319167",
+   "duration_ms": 157133,
+   "url": "https://music.apple.com/us/album/had-enough-feat-offset-quavo/1502318851?i=1502319167",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2019-12-27T12:00:00Z",
+   "artistName": "Don Toliver",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 25,
+   "title": "Sprinter",
+   "artists": [
+    "Dave",
+    "Central Cee"
+   ],
+   "album": "Sprinter - Single",
+   "trackId": "1839519978",
+   "duration_ms": 229133,
+   "url": "https://music.apple.com/us/album/sprinter/1839519973?i=1839519978",
+   "genre": "Hip-Hop",
+   "releaseDate": "2023-06-01T12:00:00Z",
+   "artistName": "Dave & Central Cee",
+   "inCN": true,
+   "cnGenre": "Hip-Hop"
+  },
+  {
+   "rank": 26,
+   "title": "After LIKE",
+   "artists": [
+    "IVE"
+   ],
+   "album": "After LIKE - Single",
+   "trackId": "1639416903",
+   "duration_ms": 176973,
+   "url": "https://music.apple.com/us/album/after-like/1639416895?i=1639416903",
+   "genre": "K-Pop",
+   "releaseDate": "2022-08-22T12:00:00Z",
+   "artistName": "IVE",
+   "inCN": false
+  },
+  {
+   "rank": 27,
+   "title": "Stuff (feat. Travis Scott)",
+   "artists": [
+    "Lil Baby"
+   ],
+   "album": "WHAM",
+   "trackId": "1786672861",
+   "duration_ms": 180667,
+   "url": "https://music.apple.com/us/album/stuff-feat-travis-scott/1786672591?i=1786672861",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-01-03T12:00:00Z",
+   "artistName": "Lil Baby",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 28,
+   "title": "GBP",
+   "artists": [
+    "Central Cee",
+    "21 Savage"
+   ],
+   "album": "CAN'T RUSH GREATNESS",
+   "trackId": "1783404294",
+   "duration_ms": 154800,
+   "url": "https://music.apple.com/us/album/gbp/1783404289?i=1783404294",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-01-17T08:00:00Z",
+   "artistName": "Central Cee & 21 Savage",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 29,
+   "title": "Mamacita (feat. Rich Homie Quan & Young Thug)",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "DAYS BEFORE RODEO",
+   "trackId": "1763919912",
+   "duration_ms": 272773,
+   "url": "https://music.apple.com/us/album/mamacita-feat-rich-homie-quan-young-thug/1763919907?i=1763919912",
+   "genre": "Rap",
+   "releaseDate": "2014-08-18T07:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "说唱"
+  },
+  {
+   "rank": 30,
+   "title": "AIZO",
+   "artists": [
+    "King Gnu"
+   ],
+   "album": "AIZO - Single",
+   "trackId": "1860538548",
+   "duration_ms": 215858,
+   "url": "https://music.apple.com/us/album/aizo/1860538546?i=1860538548",
+   "genre": "Alternative",
+   "releaseDate": "2026-01-09T12:00:00Z",
+   "artistName": "King Gnu",
+   "inCN": true,
+   "cnGenre": "另类音乐"
+  },
+  {
+   "rank": 31,
+   "title": "HOT",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "HOT - EP",
+   "trackId": "1799278617",
+   "duration_ms": 143798,
+   "url": "https://music.apple.com/us/album/hot/1799278610?i=1799278617",
+   "genre": "K-Pop",
+   "releaseDate": "2025-03-14T12:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 32,
+   "title": "漫长的季节",
+   "artists": [
+    "連麻"
+   ],
+   "album": "邻家小丈夫",
+   "trackId": "1747234160",
+   "duration_ms": 145562,
+   "url": "https://music.apple.com/us/album/%E6%BC%AB%E9%95%BF%E7%9A%84%E5%AD%A3%E8%8A%82/1747233791?i=1747234160",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2024-05-18T12:00:00Z",
+   "artistName": "連麻",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 33,
+   "title": "Last Shot",
+   "artists": [
+    "VALORANT Music",
+    "templuv",
+    "347aidan"
+   ],
+   "album": "Last Shot - Single",
+   "trackId": "1832097286",
+   "duration_ms": 184518,
+   "url": "https://music.apple.com/us/album/last-shot/1832097285?i=1832097286",
+   "genre": "Pop",
+   "releaseDate": "2025-09-09T12:00:00Z",
+   "artistName": "VALORANT Music, templuv & 347aidan",
+   "inCN": true,
+   "cnGenre": "国际流行"
+  },
+  {
+   "rank": 34,
+   "title": "I CAN'T STOP ME",
+   "artists": [
+    "TWICE"
+   ],
+   "album": "Eyes wide open",
+   "trackId": "1535654244",
+   "duration_ms": 205493,
+   "url": "https://music.apple.com/us/album/i-cant-stop-me/1535654236?i=1535654244",
+   "genre": "K-Pop",
+   "releaseDate": "2020-10-26T07:00:00Z",
+   "artistName": "TWICE",
+   "inCN": false
+  },
+  {
+   "rank": 35,
+   "title": "Ramenez la coupe à la maison",
+   "artists": [
+    "Vegedream"
+   ],
+   "album": "Ramenez la coupe à la maison - Single",
+   "trackId": "1413335940",
+   "duration_ms": 235556,
+   "url": "https://music.apple.com/us/album/ramenez-la-coupe-%C3%A0-la-maison/1413335934?i=1413335940",
+   "genre": "R&B/Soul",
+   "releaseDate": "2018-06-01T12:00:00Z",
+   "artistName": "Vegedream",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 36,
+   "title": "Superhero (Heroes & Villains)",
+   "artists": [
+    "Metro Boomin",
+    "Future",
+    "Chris Brown"
+   ],
+   "album": "HEROES & VILLAINS (Villains Version)",
+   "trackId": "1671276352",
+   "duration_ms": 182667,
+   "url": "https://music.apple.com/us/album/superhero-heroes-villains/1671275811?i=1671276352",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-12-02T12:00:00Z",
+   "artistName": "Metro Boomin, Future & Chris Brown",
+   "inCN": false
+  },
+  {
+   "rank": 37,
+   "title": "on one tonight",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "One of Wun",
+   "trackId": "1744458286",
+   "duration_ms": 90760,
+   "url": "https://music.apple.com/us/album/on-one-tonight/1744458034?i=1744458286",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2024-05-10T07:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 38,
+   "title": "Raindance",
+   "artists": [
+    "Dave",
+    "Tems"
+   ],
+   "album": "The Boy Who Played the Harp",
+   "trackId": "1847992612",
+   "duration_ms": 219744,
+   "url": "https://music.apple.com/us/album/raindance/1847992481?i=1847992612",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-10-24T12:00:00Z",
+   "artistName": "Dave & Tems",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 39,
+   "title": "ILoveUIHateU",
+   "artists": [
+    "Playboi Carti"
+   ],
+   "album": "Whole Lotta Red",
+   "trackId": "1546163993",
+   "duration_ms": 135122,
+   "url": "https://music.apple.com/us/album/iloveuihateu/1546163603?i=1546163993",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2020-12-25T12:00:00Z",
+   "artistName": "Playboi Carti",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 40,
+   "title": "SICKO MODE",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "ASTROWORLD",
+   "trackId": "1421242781",
+   "duration_ms": 312820,
+   "url": "https://music.apple.com/us/album/sicko-mode/1421241217?i=1421242781",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-08-21T12:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 41,
+   "title": "Rosary (feat. Travis Scott)",
+   "artists": [
+    "Don Toliver"
+   ],
+   "album": "OCTANE",
+   "trackId": "1871258346",
+   "duration_ms": 194595,
+   "url": "https://music.apple.com/us/album/rosary-feat-travis-scott/1871258329?i=1871258346",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-01-22T12:00:00Z",
+   "artistName": "Don Toliver",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 42,
+   "title": "SPAGHETTI",
+   "artists": [
+    "LE SSERAFIM",
+    "j-hope"
+   ],
+   "album": "SPAGHETTI",
+   "trackId": "1846119153",
+   "duration_ms": 172314,
+   "url": "https://music.apple.com/us/album/spaghetti/1846119152?i=1846119153",
+   "genre": "K-Pop",
+   "releaseDate": "2025-10-24T12:00:00Z",
+   "artistName": "LE SSERAFIM & j-hope",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 43,
+   "title": "What You Saying",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "What You Saying - Single",
+   "trackId": "1863528318",
+   "duration_ms": 131729,
+   "url": "https://music.apple.com/us/album/what-you-saying/1863528316?i=1863528318",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-12-22T12:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 44,
+   "title": "Reminder",
+   "artists": [
+    "The Weeknd"
+   ],
+   "album": "Starboy",
+   "trackId": "1440871703",
+   "duration_ms": 218879,
+   "url": "https://music.apple.com/us/album/reminder/1440871397?i=1440871703",
+   "genre": "R&B/Soul",
+   "releaseDate": "2016-11-25T12:00:00Z",
+   "artistName": "The Weeknd",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 45,
+   "title": "how you did that (feat. Kodak Black)",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "DRIP SEASON 4EVER",
+   "trackId": "1604945204",
+   "duration_ms": 160267,
+   "url": "https://music.apple.com/us/album/how-you-did-that-feat-kodak-black/1604944424?i=1604945204",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-01-07T12:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 46,
+   "title": "goosebumps",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "Birds In The Trap Sing McKnight",
+   "trackId": "1150135924",
+   "duration_ms": 243837,
+   "url": "https://music.apple.com/us/album/goosebumps/1150135681?i=1150135924",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2016-09-02T07:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 47,
+   "title": "LEMONADE",
+   "artists": [
+    "aespa"
+   ],
+   "album": "LEMONADE - The 2nd Album",
+   "trackId": "1893742010",
+   "duration_ms": 187000,
+   "url": "https://music.apple.com/us/album/lemonade/1893742002?i=1893742010",
+   "genre": "K-Pop",
+   "releaseDate": "2026-05-28T12:00:00Z",
+   "artistName": "aespa",
+   "inCN": false
+  },
+  {
+   "rank": 48,
+   "title": "Baddie",
+   "artists": [
+    "IVE"
+   ],
+   "album": "I'VE MINE - EP",
+   "trackId": "1709569470",
+   "duration_ms": 154360,
+   "url": "https://music.apple.com/us/album/baddie/1709569466?i=1709569470",
+   "genre": "K-Pop",
+   "releaseDate": "2023-10-13T12:00:00Z",
+   "artistName": "IVE",
+   "inCN": false
+  },
+  {
+   "rank": 49,
+   "title": "BANDIT",
+   "artists": [
+    "Don Toliver"
+   ],
+   "album": "HARDSTONE PSYCHO",
+   "trackId": "1753900896",
+   "duration_ms": 147747,
+   "url": "https://music.apple.com/us/album/bandit/1753900450?i=1753900896",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2024-01-31T08:00:00Z",
+   "artistName": "Don Toliver",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 50,
+   "title": "poster boy",
+   "artists": [
+    "2hollis"
+   ],
+   "album": "2",
+   "trackId": "1687014447",
+   "duration_ms": 121089,
+   "url": "https://music.apple.com/us/album/poster-boy/1687014179?i=1687014447",
+   "genre": "Electronic",
+   "releaseDate": "2023-05-11T12:00:00Z",
+   "artistName": "2hollis",
+   "inCN": true,
+   "cnGenre": "电子音乐"
+  },
+  {
+   "rank": 51,
+   "title": "The Feels",
+   "artists": [
+    "TWICE"
+   ],
+   "album": "The Feels",
+   "trackId": "1607381008",
+   "duration_ms": 198053,
+   "url": "https://music.apple.com/us/album/the-feels/1607381002?i=1607381008",
+   "genre": "K-Pop",
+   "releaseDate": "2021-10-01T12:00:00Z",
+   "artistName": "TWICE",
+   "inCN": false
+  },
+  {
+   "rank": 52,
+   "title": "REDRED",
+   "artists": [
+    "CORTIS"
+   ],
+   "album": "GREENGREEN - EP",
+   "trackId": "1887671067",
+   "duration_ms": 163002,
+   "url": "https://music.apple.com/us/album/redred/1887671065?i=1887671067",
+   "genre": "K-Pop",
+   "releaseDate": "2026-04-20T12:00:00Z",
+   "artistName": "CORTIS",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 53,
+   "title": "fukumean",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "a Gift & a Curse",
+   "trackId": "1692838486",
+   "duration_ms": 125040,
+   "url": "https://music.apple.com/us/album/fukumean/1692838126?i=1692838486",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2023-05-15T12:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 54,
+   "title": "ATTITUDE",
+   "artists": [
+    "IVE"
+   ],
+   "album": "IVE EMPATHY - EP",
+   "trackId": "1789741053",
+   "duration_ms": 194733,
+   "url": "https://music.apple.com/us/album/attitude/1789740675?i=1789741053",
+   "genre": "K-Pop",
+   "releaseDate": "2025-02-03T12:00:00Z",
+   "artistName": "IVE",
+   "inCN": false
+  },
+  {
+   "rank": 55,
+   "title": "LEMONADE (feat. Becky G)",
+   "artists": [
+    "aespa"
+   ],
+   "album": "LEMONADE - The 2nd Album",
+   "trackId": "1893742425",
+   "duration_ms": 187000,
+   "url": "https://music.apple.com/us/album/lemonade-feat-becky-g/1893742002?i=1893742425",
+   "genre": "K-Pop",
+   "releaseDate": "2026-05-28T12:00:00Z",
+   "artistName": "aespa",
+   "inCN": false
+  },
+  {
+   "rank": 56,
+   "title": "P power (feat. Drake)",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "DRIP SEASON 4EVER",
+   "trackId": "1604945199",
+   "duration_ms": 193347,
+   "url": "https://music.apple.com/us/album/p-power-feat-drake/1604944424?i=1604945199",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-01-13T08:00:00Z",
+   "artistName": "Gunna",
+   "inCN": false
+  },
+  {
+   "rank": 57,
+   "title": "4 Raws",
+   "artists": [
+    "EsDeeKid"
+   ],
+   "album": "Rebel",
+   "trackId": "1818817430",
+   "duration_ms": 146667,
+   "url": "https://music.apple.com/us/album/4-raws/1818817424?i=1818817430",
+   "genre": "Rap",
+   "releaseDate": "2025-06-20T12:00:00Z",
+   "artistName": "EsDeeKid",
+   "inCN": true,
+   "cnGenre": "说唱"
+  },
+  {
+   "rank": 58,
+   "title": "ZEZE (feat. Travis Scott & Offset)",
+   "artists": [
+    "Kodak Black"
+   ],
+   "album": "Dying to Live",
+   "trackId": "1446040612",
+   "duration_ms": 228760,
+   "url": "https://music.apple.com/us/album/zeze-feat-travis-scott-offset/1446040607?i=1446040612",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-10-12T07:00:00Z",
+   "artistName": "Kodak Black",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 59,
+   "title": "Plain Jane REMIX (feat. Nicki Minaj)",
+   "artists": [
+    "A$AP Ferg"
+   ],
+   "album": "Plain Jane REMIX (feat. Nicki Minaj) - Single",
+   "trackId": "1325899622",
+   "duration_ms": 202636,
+   "url": "https://music.apple.com/us/album/plain-jane-remix-feat-nicki-minaj/1325899620?i=1325899622",
+   "genre": "Rap",
+   "releaseDate": "2017-12-15T12:00:00Z",
+   "artistName": "A$AP Ferg",
+   "inCN": true,
+   "cnGenre": "说唱"
+  },
+  {
+   "rank": 60,
+   "title": "Money In The Grave (feat. Rick Ross)",
+   "artists": [
+    "Drake"
+   ],
+   "album": "The Best In The World Pack - Single",
+   "trackId": "1468618077",
+   "duration_ms": 205369,
+   "url": "https://music.apple.com/us/album/money-in-the-grave-feat-rick-ross/1468617896?i=1468618077",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2019-06-15T12:00:00Z",
+   "artistName": "Drake",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 61,
+   "title": "Plot Twist",
+   "artists": [
+    "Drake"
+   ],
+   "album": "ICEMAN",
+   "trackId": "6769568609",
+   "duration_ms": 195678,
+   "url": "https://music.apple.com/us/album/plot-twist/6769568449?i=6769568609",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-05-15T12:00:00Z",
+   "artistName": "Drake",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 62,
+   "title": "Lo Mein",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "Eternal Atake (Deluxe) - LUV vs. The World 2",
+   "trackId": "1502708346",
+   "duration_ms": 195299,
+   "url": "https://music.apple.com/us/album/lo-mein/1502707380?i=1502708346",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2020-03-06T08:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 63,
+   "title": "wgft (Remix)",
+   "artists": [
+    "Gunna",
+    "Chris Brown"
+   ],
+   "album": "wgft (Remix) - Single",
+   "trackId": "1869468533",
+   "duration_ms": 187133,
+   "url": "https://music.apple.com/us/album/wgft-remix/1869468525?i=1869468533",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-12-18T12:00:00Z",
+   "artistName": "Gunna & Chris Brown",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 64,
+   "title": "我想要佔據你",
+   "artists": [
+    "Accusefive"
+   ],
+   "album": "帶你飛",
+   "trackId": "1670343372",
+   "duration_ms": 252637,
+   "url": "https://music.apple.com/us/album/%E6%88%91%E6%83%B3%E8%A6%81%E4%BD%94%E6%93%9A%E4%BD%A0/1670343367?i=1670343372",
+   "genre": "Mandopop",
+   "releaseDate": "2023-02-14T12:00:00Z",
+   "artistName": "Accusefive",
+   "inCN": true,
+   "cnGenre": "国语流行"
+  },
+  {
+   "rank": 65,
+   "title": "Q U E V A S H A C E R H O Y ?",
+   "artists": [
+    "Omar Courtz",
+    "De La Rose"
+   ],
+   "album": "PRIMERA MUSA",
+   "trackId": "1760194559",
+   "duration_ms": 224023,
+   "url": "https://music.apple.com/us/album/q-u-e-v-a-s-h-a-c-e-r-h-o-y/1760193416?i=1760194559",
+   "genre": "Urbano latino",
+   "releaseDate": "2024-09-20T12:00:00Z",
+   "artistName": "Omar Courtz & De La Rose",
+   "inCN": true,
+   "cnGenre": "拉丁都市音乐"
+  },
+  {
+   "rank": 66,
+   "title": "O'3300",
+   "artists": [
+    "Mula Sakee"
+   ],
+   "album": "THE OMNI ORACLE",
+   "trackId": "1858273418",
+   "duration_ms": 180604,
+   "url": "https://music.apple.com/us/album/o3300/1858273272?i=1858273418",
+   "genre": "Chinese Hip-Hop",
+   "releaseDate": "2025-12-07T12:00:00Z",
+   "artistName": "Mula Sakee",
+   "inCN": true,
+   "cnGenre": "中文嘻哈"
+  },
+  {
+   "rank": 67,
+   "title": "ELEVEN",
+   "artists": [
+    "IVE"
+   ],
+   "album": "ELEVEN - Single",
+   "trackId": "1597404252",
+   "duration_ms": 178453,
+   "url": "https://music.apple.com/us/album/eleven/1597404250?i=1597404252",
+   "genre": "K-Pop",
+   "releaseDate": "2021-12-01T12:00:00Z",
+   "artistName": "IVE",
+   "inCN": false
+  },
+  {
+   "rank": 68,
+   "title": "Stateside (with Zara Larsson)",
+   "artists": [
+    "PinkPantheress"
+   ],
+   "album": "Fancy Some More?",
+   "trackId": "1843595808",
+   "duration_ms": 184762,
+   "url": "https://music.apple.com/us/album/stateside-with-zara-larsson/1843595790?i=1843595808",
+   "genre": "Pop",
+   "releaseDate": "2025-05-09T12:00:00Z",
+   "artistName": "PinkPantheress",
+   "inCN": true,
+   "cnGenre": "国际流行"
+  },
+  {
+   "rank": 69,
+   "title": "BAD",
+   "artists": [
+    "ATEEZ"
+   ],
+   "album": "GOLDEN HOUR : Part.5 - EP",
+   "trackId": "6770401926",
+   "duration_ms": 156035,
+   "url": "https://music.apple.com/us/album/bad/6770401924?i=6770401926",
+   "genre": "K-Pop",
+   "releaseDate": "2026-06-26T12:00:00Z",
+   "artistName": "ATEEZ",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 70,
+   "title": "Truth In The Lies",
+   "artists": [
+    "Central Cee",
+    "Lil Durk"
+   ],
+   "album": "CAN'T RUSH GREATNESS",
+   "trackId": "1783404301",
+   "duration_ms": 142787,
+   "url": "https://music.apple.com/us/album/truth-in-the-lies/1783404289?i=1783404301",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2025-01-24T12:00:00Z",
+   "artistName": "Central Cee & Lil Durk",
+   "inCN": false
+  },
+  {
+   "rank": 71,
+   "title": "Babe (feat. 罗言)",
+   "artists": [
+    "Masiwei",
+    "Asen"
+   ],
+   "album": "Dog Bite Dog",
+   "trackId": "1697115529",
+   "duration_ms": 192638,
+   "url": "https://music.apple.com/us/album/babe-feat-%E7%BD%97%E8%A8%80/1697115272?i=1697115529",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2023-07-14T12:00:00Z",
+   "artistName": "Masiwei & Asen",
+   "inCN": false
+  },
+  {
+   "rank": 72,
+   "title": "Self Aware",
+   "artists": [
+    "Temper City"
+   ],
+   "album": "Self Aware - Single",
+   "trackId": "1877803360",
+   "duration_ms": 180741,
+   "url": "https://music.apple.com/us/album/self-aware/1877803357?i=1877803360",
+   "genre": "Alternative",
+   "releaseDate": "2026-02-15T12:00:00Z",
+   "artistName": "Temper City",
+   "inCN": true,
+   "cnGenre": "另类音乐"
+  },
+  {
+   "rank": 73,
+   "title": "Oh Okay (feat. Young Thug & Lil Baby)",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "Drip Season 3 (Deluxe)",
+   "trackId": "1457014751",
+   "duration_ms": 199012,
+   "url": "https://music.apple.com/us/album/oh-okay-feat-young-thug-lil-baby/1457014642?i=1457014751",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-02-02T12:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 74,
+   "title": "RUDE!",
+   "artists": [
+    "Hearts2Hearts"
+   ],
+   "album": "RUDE! - Single",
+   "trackId": "1875146815",
+   "duration_ms": 200000,
+   "url": "https://music.apple.com/us/album/rude/1875146814?i=1875146815",
+   "genre": "K-Pop",
+   "releaseDate": "2026-02-20T12:00:00Z",
+   "artistName": "Hearts2Hearts",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 75,
+   "title": "Se Me Nota (Agárrame) [Prod By B - One]",
+   "artists": [
+    "Chimbala",
+    "Omega"
+   ],
+   "album": "Se Me Nota (Agárrame) - Single",
+   "trackId": "1564402493",
+   "duration_ms": 176000,
+   "url": "https://music.apple.com/us/album/se-me-nota-ag%C3%A1rrame-prod-by-b-one/1564402492?i=1564402493",
+   "genre": "Urbano latino",
+   "releaseDate": "2021-04-23T12:00:00Z",
+   "artistName": "Chimbala & Omega",
+   "inCN": true,
+   "cnGenre": "拉丁都市音乐"
+  },
+  {
+   "rank": 76,
+   "title": "Perfect Night",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "Perfect Night (for FEARNOT) - Single",
+   "trackId": "1761642444",
+   "duration_ms": 159080,
+   "url": "https://music.apple.com/us/album/perfect-night/1761642217?i=1761642444",
+   "genre": "K-Pop",
+   "releaseDate": "2023-10-27T07:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 77,
+   "title": "It's Me",
+   "artists": [
+    "ILLIT"
+   ],
+   "album": "MAMIHLAPINATAPAI - EP",
+   "trackId": "1887194026",
+   "duration_ms": 138284,
+   "url": "https://music.apple.com/us/album/its-me/1887194024?i=1887194026",
+   "genre": "K-Pop",
+   "releaseDate": "2026-04-30T12:00:00Z",
+   "artistName": "ILLIT",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 78,
+   "title": "Bad and Boujee (feat. Lil Uzi Vert)",
+   "artists": [
+    "Migos"
+   ],
+   "album": "Culture",
+   "trackId": "1615496282",
+   "duration_ms": 343150,
+   "url": "https://music.apple.com/us/album/bad-and-boujee-feat-lil-uzi-vert/1615495955?i=1615496282",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2016-10-28T12:00:00Z",
+   "artistName": "Migos",
+   "inCN": false
+  },
+  {
+   "rank": 79,
+   "title": "You Was Right",
+   "artists": [
+    "Lil Uzi Vert"
+   ],
+   "album": "Lil Uzi Vert Vs. The World",
+   "trackId": "1116298901",
+   "duration_ms": 163944,
+   "url": "https://music.apple.com/us/album/you-was-right/1116298635?i=1116298901",
+   "genre": "Hip-Hop",
+   "releaseDate": "2016-04-15T07:00:00Z",
+   "artistName": "Lil Uzi Vert",
+   "inCN": true,
+   "cnGenre": "Hip-Hop"
+  },
+  {
+   "rank": 80,
+   "title": "iffy iffy",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "'PUREFLOW', Pt. 1",
+   "trackId": "1894803133",
+   "duration_ms": 129200,
+   "url": "https://music.apple.com/us/album/iffy-iffy/1894802719?i=1894803133",
+   "genre": "K-Pop",
+   "releaseDate": "2026-05-22T12:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 81,
+   "title": "Come Over",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "HOT - EP",
+   "trackId": "1799278622",
+   "duration_ms": 137178,
+   "url": "https://music.apple.com/us/album/come-over/1799278610?i=1799278622",
+   "genre": "K-Pop",
+   "releaseDate": "2025-03-14T12:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 82,
+   "title": "MELTDOWN (feat. Drake)",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "UTOPIA",
+   "trackId": "1699712649",
+   "duration_ms": 246134,
+   "url": "https://music.apple.com/us/album/meltdown-feat-drake/1699712635?i=1699712649",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2023-07-28T07:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 83,
+   "title": "anyhow (feat. ZENE THE ZILLA)",
+   "artists": [
+    "TOIL",
+    "Gist"
+   ],
+   "album": "anyhow (feat. ZENE THE ZILLA) - Single",
+   "trackId": "1794038115",
+   "duration_ms": 211120,
+   "url": "https://music.apple.com/us/album/anyhow-feat-zene-the-zilla/1794038114?i=1794038115",
+   "genre": "R&B/Soul",
+   "releaseDate": "2025-02-04T12:00:00Z",
+   "artistName": "TOIL & Gist",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 84,
+   "title": "Janice STFU",
+   "artists": [
+    "Drake"
+   ],
+   "album": "ICEMAN",
+   "trackId": "6769568596",
+   "duration_ms": 237344,
+   "url": "https://music.apple.com/us/album/janice-stfu/6769568449?i=6769568596",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-05-15T12:00:00Z",
+   "artistName": "Drake",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 85,
+   "title": "LOVE DIVE",
+   "artists": [
+    "IVE"
+   ],
+   "album": "LOVE DIVE - Single",
+   "trackId": "1616804152",
+   "duration_ms": 177187,
+   "url": "https://music.apple.com/us/album/love-dive/1616804151?i=1616804152",
+   "genre": "K-Pop",
+   "releaseDate": "2022-04-05T12:00:00Z",
+   "artistName": "IVE",
+   "inCN": false
+  },
+  {
+   "rank": 86,
+   "title": "Rap Money (feat. JelloRio)",
+   "artists": [
+    "Asen"
+   ],
+   "album": "NESA",
+   "trackId": "1652831909",
+   "duration_ms": 269589,
+   "url": "https://music.apple.com/us/album/rap-money-feat-jellorio/1652831904?i=1652831909",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2022-11-05T12:00:00Z",
+   "artistName": "Asen",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 87,
+   "title": "Wasted (feat. Lil Uzi Vert)",
+   "artists": [
+    "Juice WRLD"
+   ],
+   "album": "Goodbye & Good Riddance",
+   "trackId": "1407165432",
+   "duration_ms": 258480,
+   "url": "https://music.apple.com/us/album/wasted-feat-lil-uzi-vert/1407165109?i=1407165432",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-05-23T07:00:00Z",
+   "artistName": "Juice WRLD",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 88,
+   "title": "Love Love Love (feat. 융진)",
+   "artists": [
+    "Epik High"
+   ],
+   "album": "Remapping the Human Soul",
+   "trackId": "1610108181",
+   "duration_ms": 231093,
+   "url": "https://music.apple.com/us/album/love-love-love-feat-%EC%9C%B5%EC%A7%84/1610106934?i=1610108181",
+   "genre": "K-Pop",
+   "releaseDate": "2006-02-13T12:00:00Z",
+   "artistName": "Epik High",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 89,
+   "title": "DOLLAZ ON MY HEAD (feat. Young Thug)",
+   "artists": [
+    "Gunna"
+   ],
+   "album": "WUNNA (Deluxe)",
+   "trackId": "1524859953",
+   "duration_ms": 197760,
+   "url": "https://music.apple.com/us/album/dollaz-on-my-head-feat-young-thug/1524859942?i=1524859953",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2020-05-22T12:00:00Z",
+   "artistName": "Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 90,
+   "title": "Take What You Want (feat. Ozzy Osbourne & Travis Scott)",
+   "artists": [
+    "Post Malone"
+   ],
+   "album": "Hollywood's Bleeding",
+   "trackId": "1477880568",
+   "duration_ms": 229580,
+   "url": "https://music.apple.com/us/album/take-what-you-want-feat-ozzy-osbourne-travis-scott/1477880265?i=1477880568",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2019-09-06T12:00:00Z",
+   "artistName": "Post Malone",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 91,
+   "title": "SPECIALZ",
+   "artists": [
+    "King Gnu"
+   ],
+   "album": "SPECIALZ - Single",
+   "trackId": "1702823583",
+   "duration_ms": 238987,
+   "url": "https://music.apple.com/us/album/specialz/1702823577?i=1702823583",
+   "genre": "Alternative",
+   "releaseDate": "2023-09-01T12:00:00Z",
+   "artistName": "King Gnu",
+   "inCN": true,
+   "cnGenre": "另类音乐"
+  },
+  {
+   "rank": 92,
+   "title": "Eve, Psyche & The Bluebeard’s wife",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "UNFORGIVEN",
+   "trackId": "1682502483",
+   "duration_ms": 185539,
+   "url": "https://music.apple.com/us/album/eve-psyche-the-bluebeards-wife/1682502020?i=1682502483",
+   "genre": "K-Pop",
+   "releaseDate": "2023-05-01T12:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 93,
+   "title": "UNFORGIVEN",
+   "artists": [
+    "LE SSERAFIM",
+    "Nile Rodgers"
+   ],
+   "album": "UNFORGIVEN",
+   "trackId": "1682502472",
+   "duration_ms": 182149,
+   "url": "https://music.apple.com/us/album/unforgiven/1682502020?i=1682502472",
+   "genre": "K-Pop",
+   "releaseDate": "2023-05-01T12:00:00Z",
+   "artistName": "LE SSERAFIM & Nile Rodgers",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 94,
+   "title": "GO!",
+   "artists": [
+    "CORTIS"
+   ],
+   "album": "COLOR OUTSIDE THE LINES - EP",
+   "trackId": "1832031336",
+   "duration_ms": 170880,
+   "url": "https://music.apple.com/us/album/go/1832031331?i=1832031336",
+   "genre": "K-Pop",
+   "releaseDate": "2025-09-08T12:00:00Z",
+   "artistName": "CORTIS",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 95,
+   "title": "CRAZY",
+   "artists": [
+    "LE SSERAFIM"
+   ],
+   "album": "CRAZY - EP",
+   "trackId": "1763658321",
+   "duration_ms": 164554,
+   "url": "https://music.apple.com/us/album/crazy/1763658157?i=1763658321",
+   "genre": "K-Pop",
+   "releaseDate": "2024-08-30T12:00:00Z",
+   "artistName": "LE SSERAFIM",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  },
+  {
+   "rank": 96,
+   "title": "Drip Too Hard",
+   "artists": [
+    "Lil Baby",
+    "Gunna"
+   ],
+   "album": "Drip Harder",
+   "trackId": "1437955726",
+   "duration_ms": 145543,
+   "url": "https://music.apple.com/us/album/drip-too-hard/1437955279?i=1437955726",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2018-09-12T07:00:00Z",
+   "artistName": "Lil Baby & Gunna",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 97,
+   "title": "GASS (feat. Travis Scott)",
+   "artists": [
+    "Nemzzz"
+   ],
+   "album": "LOCKED IN",
+   "trackId": "6796029943",
+   "duration_ms": 114000,
+   "url": "https://music.apple.com/us/album/gass-feat-travis-scott/6796029883?i=6796029943",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2026-09-04T12:00:00Z",
+   "artistName": "Nemzzz",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 98,
+   "title": "Skyfall (feat. Young Thug)",
+   "artists": [
+    "Travis Scott"
+   ],
+   "album": "DAYS BEFORE RODEO",
+   "trackId": "1763919917",
+   "duration_ms": 314424,
+   "url": "https://music.apple.com/us/album/skyfall-feat-young-thug/1763919907?i=1763919917",
+   "genre": "Hip-Hop/Rap",
+   "releaseDate": "2014-08-18T07:00:00Z",
+   "artistName": "Travis Scott",
+   "inCN": true,
+   "cnGenre": "嘻哈/说唱"
+  },
+  {
+   "rank": 99,
+   "title": "LEFT RIGHT",
+   "artists": [
+    "XG"
+   ],
+   "album": "SHOOTING STAR - Single",
+   "trackId": "1660487909",
+   "duration_ms": 208066,
+   "url": "https://music.apple.com/us/album/left-right/1660487903?i=1660487909",
+   "genre": "R&B/Soul",
+   "releaseDate": "2023-01-25T12:00:00Z",
+   "artistName": "XG",
+   "inCN": true,
+   "cnGenre": "R&B/灵魂乐"
+  },
+  {
+   "rank": 100,
+   "title": "All Night",
+   "artists": [
+    "IVE",
+    "Saweetie"
+   ],
+   "album": "All Night - Single",
+   "trackId": "1724240372",
+   "duration_ms": 197764,
+   "url": "https://music.apple.com/us/album/all-night/1724240361?i=1724240372",
+   "genre": "K-Pop",
+   "releaseDate": "2024-01-19T08:00:00Z",
+   "artistName": "IVE & Saweetie",
+   "inCN": true,
+   "cnGenre": "K-Pop"
+  }
+ ]
+}
