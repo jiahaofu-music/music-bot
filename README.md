@@ -18,7 +18,10 @@
 | 文件 | 负责方 | 说明 |
 |---|---|---|
 | `recommender.js` | 算法 bot | 推荐引擎 `window.MusicRec`；种子、反馈、历史等数据都存在这里 |
-| `index.html` / `style.css` / `ui.js` | 前端 bot | 页面和交互，只调用 `window.MusicRec` |
+| `storage.js` | 算法 bot | 账号存储 `window.YYBStorage`：把 `yinyuebot.v1` 同步到 Supabase 表 `user_state` |
+| `supabase/schema.sql` | 算法 bot | 建表和行级安全策略，在 Supabase SQL 编辑器里运行一次（不打包） |
+| `index.html` / `style.css` / `ui.js` | 前端 bot | 页面和交互，只调用 `window.MusicRec` / `window.YYBStorage` |
+| `config.js` | 前端 bot | Supabase 项目地址和 anon key（公开值）；留空则账号功能关闭 |
 | `API_CONTRACT.md` | 双方 | 接口约定 |
 | `app.js` | 早期原型 | 旧版独立实现，页面不再加载 |
 | `replay-2026.json`、`taste-profile.json/.md` | 数据 | Apple Music Replay 2026 歌单和口味画像 |
@@ -48,8 +51,10 @@ KEEP_OUT=1 ./qa/smoke.sh                              # 保留日志和截图（
 ```
 
 - 脚本会在项目根目录用 `python3 -m http.server $PORT` 起一个临时服务，跑完自动关闭（trap）。
-- 依次运行：`qa/node4.js`（引擎，Node 内存存储）、`qa/unit-ui.js`（界面里的歌手拆分）、`qa/mock.js`（`?mock=1` 界面）、`qa/run4.js`（真实引擎完整流程，需要联网，约 2–3 分钟）。
+- 依次运行：`qa/node4.js`（引擎，Node 内存存储）、`qa/unit-ui.js`（界面里的歌手拆分）、`qa/mock.js`（`?mock=1` 界面）、`qa/acct.js`（账号：注册 / 登录 / 退出、导入、多账号隔离、恢复登录、未配置和 CDN 失败）、`qa/run4.js`（真实引擎完整流程，需要联网，约 2–3 分钟）。
 - 结尾会打印实际的检查数：`[smoke] checks: 总数 total, 通过 passed, 失败 failed`。检查数会随用例增减，以脚本输出为准。
+- 测试**不会访问真实的 Supabase 项目，也不会注册任何真实账号**：`qa/net-guard.js` 拦截所有 `*.supabase.co` 和 supabase-js CDN 请求，并改写 `config.js`；账号测试用 `qa/fx/fake-supabase.js` 假装 Supabase（登录和 `user_state` 表都放在临时浏览器里），`storage.js` 和 `recommender.js` 用的是真文件。上线后的真实验收由 监工 负责。
+- 引擎改了 `KEEP_WHOLE` 后运行 `node qa/sync-keep.js`，把 ui.js 里的备用歌手拆分同步过来。
 - 浏览器测试每次都用**全新的临时 Chrome 用户目录**，不会读写你真实浏览器里的 localStorage，也不会动你今天已经生成的推荐。
 - 任一检查失败时退出码非 0；`[check] FAIL(engine)` 表示问题在推荐引擎一侧。
 - 需要 Node 18+ 和 Chrome（`CHROME=/path/to/chrome` 可改路径）；第一次运行会在 `qa/` 里安装 `puppeteer-core`。
@@ -61,9 +66,16 @@ KEEP_OUT=1 ./qa/smoke.sh                              # 保留日志和截图（
 ./build.sh      # 生成 dist/music-recs.zip 并列出内容
 ```
 
-压缩包只含运行需要的文件：`index.html`、`style.css`、`ui.js`、`recommender.js`、`taste-descriptors.json`（引擎读取）、`replay-2026.json`（「读取 Replay」按钮）、`seed-profile-2026.json`（`applySeedProfile` 默认文件）和本 README。不含 `app.js`、`page-*.html`、`raw-*.json`、备份、截图、`qa/`、`dist/`。
+压缩包只含运行需要的文件：`index.html`、`style.css`、`config.js`、`ui.js`、`recommender.js`、`storage.js`、`taste-descriptors.json`（引擎读取）、`replay-2026.json`（「读取 Replay」按钮）、`seed-profile-2026.json`（`applySeedProfile` 默认文件）和本 README。不含 `app.js`、`supabase/`、`page-*.html`、`raw-*.json`、备份、截图、`qa/`、`dist/`。
 
 以下是手动步骤，脚本不会替你发布任何东西：
+
+**账号（Supabase，部署前做一次）**
+1. 在 Supabase 项目的 SQL Editor 里粘贴并运行 `supabase/schema.sql`（可重复运行），会建好 `public.user_state` 表和「每人只能读写自己那一行」的策略。
+2. 填 `config.js`：`SUPABASE_URL` 和 `SUPABASE_ANON_KEY`（Project Settings → API；anon key 是公开的，可以放前端；**不要**放 service_role key）。两项都留空时账号功能关闭，网站以纯游客模式运行。
+3. Authentication → URL Configuration：Site URL 填 `https://jiahaofu-music.github.io/music-bot/`，Redirect URLs 也加上 `https://jiahaofu-music.github.io/music-bot/`。
+4. Authentication → Providers → Email：保持开启。「Confirm email」目前是关闭的，所以注册成功就直接登录；如果以后打开它，注册后会提示「注册成功，请登录」，用户要先点邮件里的链接再登录。
+5. 网页会从 jsDelivr 加载 supabase-js v2；这个 CDN 或 `*.supabase.co` 被屏蔽时只影响登录，游客模式照常可用。
 
 **GitHub Pages**
 1. 新建一个仓库（可以设为私有，但 Pages 免费版需要公开仓库）。
@@ -77,7 +89,7 @@ KEEP_OUT=1 ./qa/smoke.sh                              # 保留日志和截图（
 3. 部署完成后会得到 `https://<随机名>.netlify.app`，可在 Site settings 里改名或绑定域名。
 4. 以后更新：重新运行 `./build.sh`，在该站点的 Deploys 页再拖一次文件夹。
 
-两种方式都是纯静态托管，不需要构建命令或后端。数据仍只保存在访问者自己的浏览器里，换了网址（域名）就是一份新的 localStorage，可先在旧地址「导出 JSON」，再到新地址「导入」。
+两种方式都是纯静态托管，不需要构建命令或自己的后端（账号数据存在 Supabase）。游客数据只保存在访问者自己的浏览器里，换了网址（域名）就是一份新的 localStorage，可先在旧地址「导出 JSON」，再到新地址「导入」。
 
 ### 托管注意
 
@@ -87,10 +99,13 @@ KEEP_OUT=1 ./qa/smoke.sh                              # 保留日志和截图（
 
 ## 数据
 
-- 所有数据都保存在当前浏览器的 localStorage 里，由推荐引擎 MusicRec 统一管理：
+- 游客（未登录）的数据保存在当前浏览器的 localStorage 里，由推荐引擎 MusicRec 统一管理：
   - `yinyuebot.v1`：种子、评分、历史、设置
   - `yinyuebot.reccache.v1`：请求缓存
-- 界面只用 `yinyuebot.ui.v1` 记住当前标签页，以及屏蔽歌手时用到的 id。
+- 登录后，数据存在 Supabase 的 `user_state` 表（每个账号一行，换设备也能用），本机另有缓存 `yinyuebot.u.<用户id>.v1`；修改约 0.8 秒后自动上传，账号弹窗里显示「保存中… / 已保存 / 同步失败」（失败会自动重试）。游客数据和各账号互不影响；退出登录后回到本机游客数据。
+- 第一次在这台设备登录一个空账号、而本机游客有数据时，会问「把本机访客数据导入这个账号吗？」；选不导入就从空账号开始。游客数据两种情况下都保留。
+- 界面只用 `yinyuebot.ui.v1` 记住当前标签页、屏蔽歌手时用到的 id，以及哪些账号已经问过导入。
 - 「设置 → 导出 JSON」：导出 `MusicRec.exportData()` 返回的完整引擎 JSON。
 - 「导入 JSON」：用 `MusicRec.importData()` 恢复。导入前会提示「将替换现有 N 条反馈、M 天历史，确定导入？」。也能导入旧版界面导出的文件；文件格式不对时会提示错误，原来的数据逐字节保持不变。
-- 「清空全部」：确认后调用引擎的 `reset()`（没有时直接删除 `yinyuebot.v1`），并删除界面设置 `yinyuebot.ui.v1`，然后刷新页面。
+- 「清空全部」：只清当前数据——登录时只清这个账号（并上传），未登录时只清本机游客数据。确认后调用引擎的 `reset()`，并清掉界面设置 `yinyuebot.ui.v1`（保留「已问过导入」的记录），然后刷新页面。
+- 「导出 / 导入 JSON」作用于当前数据（登录时是账号数据）。

@@ -11,7 +11,8 @@ const KEY = 'yinyuebot.v1', RC_KEY = 'yinyuebot.reccache.v1', DAY = 86400000;
 const isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 
 // ---------------- storage ----------------
-let store = (() => { try { if (typeof localStorage !== 'undefined') return localStorage; } catch (e) {} const m = new Map();
+// baseStore: real localStorage (request cache, guest state). stateStore: optional per-account store for KEY only (setStore).
+let baseStore = (() => { try { if (typeof localStorage !== 'undefined') return localStorage; } catch (e) {} const m = new Map();
   return { getItem: k => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k) }; })();
 const defaults = () => ({ version: 1, seeds: { genres: [], artists: [], songs: [] }, feedback: {}, history: {},
   settings: { storefront: 'us', searchStore: 'us', count: 10, discovery: 0.6, lang: 'zh' }, migrations: { sfUs: 1 } });
@@ -56,8 +57,10 @@ function normTrackRecord(t) {
   o.previewUrl = o.previewUrl ?? o.preview ?? ''; o.preview = o.preview ?? o.previewUrl;
   Object.keys(o).forEach(k => o[k] === undefined && delete o[k]); return o;
 }
-function loadState() { try { return normalizeState(JSON.parse(store.getItem(KEY))); } catch (e) { return defaults(); } }
-function saveState(s) { store.setItem(KEY, JSON.stringify(s)); }
+let stateStore = null, storeGen = 0;
+const curStore = () => stateStore || baseStore;   // re-read on every call: nothing caches profile state across a store switch
+function loadState(st) { try { return normalizeState(JSON.parse((st || curStore()).getItem(KEY))); } catch (e) { return defaults(); } }
+function saveState(s, st) { (st || curStore()).setItem(KEY, JSON.stringify(s)); }
 
 // ---------------- utils ----------------
 const norm = s => String(s || '').toLowerCase().normalize('NFKC').replace(/\(.*?\)|\[.*?\]|（.*?）/g, '').replace(/[^\p{L}\p{N}]+/gu, '');
@@ -69,23 +72,26 @@ function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>>
 function weightedPick(items, wf, r) { const tot = items.reduce((s, i) => s + Math.max(0, wf(i)), 0); if (!tot) return null; let x = r() * tot; for (const i of items) { x -= Math.max(0, wf(i)); if (x <= 0) return i; } return items[items.length - 1]; }
 // split "A & B, C feat. D" into artist names
 // credit string -> artist names, first-billed first ("21 Savage, Offset & Metro Boomin" -> ['21 Savage','Offset','Metro Boomin'])
-const KEEP_WHOLE = ['Tyler, The Creator', 'Earth, Wind & Fire', 'Simon & Garfunkel', 'Hall & Oates', 'Crosby, Stills, Nash & Young', 'Mumford & Sons', 'Florence + the Machine', 'Marina & The Diamonds', 'Chase & Status', 'Above & Beyond', 'Chloe x Halle', 'AC/DC', 'Belle & Sebastian', 'Iron & Wine', 'Hootie & the Blowfish', 'Brooks & Dunn', 'Dan + Shay', 'Sam & Dave', 'Peter, Bjorn and John', 'Years & Years', 'Sly & the Family Stone', 'Kool & the Gang', 'Prince & the Revolution'];
+const KEEP_WHOLE = ['Tyler, The Creator', 'Earth, Wind & Fire', 'Simon & Garfunkel', 'Hall & Oates', 'Daryl Hall & John Oates', 'Crosby, Stills, Nash & Young', 'Crosby, Stills & Nash', 'Mumford & Sons', 'Florence + the Machine', 'Florence and the Machine', 'Marina & The Diamonds', 'Marina and the Diamonds', 'Chase & Status', 'Above & Beyond', 'Chloe x Halle', 'AC/DC', 'Belle & Sebastian', 'Iron & Wine', 'Hootie & the Blowfish', 'Brooks & Dunn', 'Dan + Shay', 'Sam & Dave', 'Peter, Bjorn and John', 'Years & Years', 'Sly & the Family Stone', 'Kool & the Gang', 'Prince & the Revolution', 'Of Monsters and Men', 'Bob Marley & The Wailers', 'Tom Petty and the Heartbreakers', 'Tom Petty & the Heartbreakers', 'Echo & the Bunnymen', 'Huey Lewis & the News', 'Angus & Julia Stone', 'Big & Rich', 'Macklemore & Ryan Lewis', 'She & Him', 'Peter, Paul and Mary', 'Emerson, Lake & Palmer', 'Blood, Sweat & Tears', 'Captain & Tennille', 'Ike & Tina Turner', 'Matt and Kim', 'Christine and the Queens', 'Edward Sharpe & the Magnetic Zeros', 'Grace Potter & the Nocturnals', 'Nathaniel Rateliff & the Night Sweats', 'Bruce Springsteen & the E Street Band', 'Bob Seger & the Silver Bullet Band', 'Joan Jett & the Blackhearts', 'Katrina & the Waves', 'Martha & the Vandellas', 'Smokey Robinson & the Miracles', 'Gladys Knight & the Pips', 'Diana Ross & the Supremes', 'Derek & the Dominos', 'Siouxsie & the Banshees', 'Elvis Costello & the Attractions', 'Kenny Rogers & the First Edition', 'Tegan and Sara', 'Sonny & Cher', 'Ashford & Simpson', 'Peaches & Herb', 'Brandon & Leah', 'Coheed and Cambria', 'Hardy & Hardy', 'Lily & Madeleine', 'The Naked and Famous', 'Jack & Jack', 'Love and Rockets', 'Mike + The Mechanics', 'Me First and the Gimme Gimmes', 'Hootie and the Blowfish', 'Earth Wind & Fire', 'Simon and Garfunkel', 'DJ Jazzy Jeff & The Fresh Prince', 'Eric B. & Rakim'];
+const KEEP_SORTED = KEEP_WHOLE.slice().sort((a, b) => b.length - a.length);   // longest first (Daryl Hall & John Oates before Hall & Oates)
 const splitArtists = s => { let x = String(s || ''); const keep = [];
-  KEEP_WHOLE.forEach(n => { const i = x.toLowerCase().indexOf(n.toLowerCase()); if (i >= 0) { keep.push(x.substr(i, n.length)); x = x.slice(0, i) + '\u0000' + (keep.length - 1) + '\u0000' + x.slice(i + n.length); } });
+  KEEP_SORTED.forEach(n => { const lx = x.toLowerCase(), ln = n.toLowerCase(); let i = -1;
+    for (let p = lx.indexOf(ln); p >= 0; p = lx.indexOf(ln, p + 1)) if (!/[\p{L}\p{N}]/u.test(lx[p - 1] || '') && !/[\p{L}\p{N}]/u.test(lx[p + ln.length] || '')) { i = p; break; }   // whole words only
+    if (i >= 0) { keep.push(x.substr(i, n.length)); x = x.slice(0, i) + '\u0000' + (keep.length - 1) + '\u0000' + x.slice(i + n.length); } });
   return x.split(/\s*(?:,|，|&|＆|、|[(\[（]?\bfeaturing\b|[(\[（]?\bfeat\b\.?|[(\[（]?\bft\b\.?|;|\s\/\s|\bwith\b|(?<=\s)[x×](?=\s+[^\s&,，、;＆(（])|\s\+\s)\s*/i)
     .map(y => y.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]).replace(/^[\s(（\[]+|[\s)）\]]+$/g, '').trim()).filter((y, i, arr) => y && arr.findIndex(z => z.toLowerCase() === y.toLowerCase()) === i); };   // dedupe
 const toAppUrl = u => String(u || '').replace(/^https:/, 'music:');
 function cleanUrl(u) { return String(u || '').replace(/([?&])uo=\d+&?/, '$1').replace(/[?&]$/, ''); }
 
 // ---------------- request cache (localStorage, TTL, size-capped) ----------------
-let RC = (() => { try { return JSON.parse(store.getItem(RC_KEY)) || {}; } catch (e) { return {}; } })();
+let RC = (() => { try { return JSON.parse(baseStore.getItem(RC_KEY)) || {}; } catch (e) { return {}; } })();
 let rcDirty = null;
 function rcGet(k, days) { const e = RC[k]; return e && (Date.now() - e.at) < days * DAY ? e : null; }
 function rcSet(k, v) {
   RC[k] = { at: Date.now(), v };
   if (!rcDirty) rcDirty = setTimeout(() => { rcDirty = null; const ks = Object.keys(RC);
     if (ks.length > 600) ks.sort((a, b) => RC[a].at - RC[b].at).slice(0, ks.length - 500).forEach(x => delete RC[x]);
-    try { store.setItem(RC_KEY, JSON.stringify(RC)); } catch (e) { RC = {}; try { store.removeItem(RC_KEY); } catch (_) {} } }, 50);
+    try { baseStore.setItem(RC_KEY, JSON.stringify(RC)); } catch (e) { RC = {}; try { baseStore.removeItem(RC_KEY); } catch (_) {} } }, 50);
   return v;
 }
 async function cached(k, days, fn) { const e = rcGet(k, days); if (e) return e.v; const v = await fn(); return rcSet(k, v); }
@@ -687,17 +693,17 @@ const MusicRec = {
   },
   /** Daily set for dateStr (default today, 'YYYY-MM-DD'). Cached in state.history[date]; refresh:true makes a new batch (excludes earlier batches). */
   async getDaily(dateStr, opts = {}) {
-    const date = dateStr || todayStr(), S = loadState(), H = S.history[date];
+    const st = curStore(), gen = storeGen, date = dateStr || todayStr(), S = loadState(st), H = S.history[date];
     const exclude = (opts.exclude || []).map(String), fresh = !!opts.refresh || exclude.length > 0;
     const ph = profileHash(S, S.replay), last = H && H.sets && H.sets[H.sets.length - 1];
     // An already-saved day is never regenerated implicitly: profile/seed/storefront/scoring changes apply to the NEXT day
     // or to an explicit refresh ({refresh:true} / exclude). (set.profile is kept for diagnostics only.)
     if (last && !fresh && last.tracks && last.tracks.length) return last.tracks;
-    const k = date + (fresh ? ':r:' + exclude.join(',') : ''); if (inflight[k]) return inflight[k];
+    const k = gen + '|' + date + (fresh ? ':r:' + exclude.join(',') : ''); if (inflight[k]) return inflight[k];   // per store generation
     inflight[k] = (async () => {
       const setNo = H && H.sets ? H.sets.length : 0; // setNo>0 also excludes every earlier batch of this date
       const tracks = await recommend(S, { date, setNo, count: opts.count, exclude });
-      if (tracks.length) { const S2 = loadState(); (S2.history[date] = S2.history[date] || { sets: [] }).sets.push({ at: Date.now(), profile: ph, tracks }); saveState(S2); }
+      if (tracks.length) { const S2 = loadState(st); (S2.history[date] = S2.history[date] || { sets: [] }).sets.push({ at: Date.now(), profile: ph, tracks }); saveState(S2, st); }
       return tracks;
     })().finally(() => { delete inflight[k]; });
     return inflight[k];
@@ -775,7 +781,7 @@ const MusicRec = {
   },
   setStorefront(sf = 'us') { const S = loadState(); S.settings.storefront = String(sf || 'us').toLowerCase().slice(0, 2); saveState(S); return S.settings.storefront; },
   setSettings(p = {}) { const S = loadState(); Object.assign(S.settings, p); saveState(S); return S.settings; },
-  clearCache() { RC = {}; try { store.removeItem(RC_KEY); } catch (e) {} },
+  clearCache() { RC = {}; try { baseStore.removeItem(RC_KEY); } catch (e) {} },
   // lower-level helpers
   recommend, verifyTracks, resolveArtist: (n, S) => resolveArtist(n, S || loadState()), relatedArtists, genreArtists: (g, S) => genreArtists(g, S || loadState()),
   tasteModel, replayBoost, canonGenre, versionKind, versionPrefs, versionPenalised, setDescriptors, loadDescriptors, descStatic,
@@ -799,7 +805,13 @@ const MusicRec = {
   splitArtists,
   currentSignals, todayStr, hash, rng, stats,
   /** Inject a storage object ({getItem,setItem,removeItem}); used by Node tests. */
-  setStorage(s) { store = s; try { RC = JSON.parse(store.getItem(RC_KEY)) || {}; } catch (e) { RC = {}; } },
+  setStorage(s) { baseStore = s; try { RC = JSON.parse(baseStore.getItem(RC_KEY)) || {}; } catch (e) { RC = {}; } },
+  /** Per-account state store for KEY ('yinyuebot.v1') only: {getItem,setItem,removeItem} (sync). null = back to localStorage (guest).
+   *  The request cache (RC_KEY) always stays in localStorage. In-flight getDaily calls finish into the store they started with. */
+  setStore(s) { if (s != null && !(typeof s.getItem === 'function' && typeof s.setItem === 'function')) throw new Error('setStore: need {getItem,setItem,removeItem}');
+    stateStore = s || null; storeGen++; return MusicRec.getStore(); },
+  /** The store set by setStore, or null when on localStorage (guest). */
+  getStore() { return stateStore; },
   KEY, RC_KEY,
 };
 function toReplay(x) { const tr = Array.isArray(x) ? x : (x && x.tracks) || [];

@@ -20,6 +20,7 @@
       <circle cx="56" cy="6" r="3" class="mk-pivot"/>
     </svg>
     <div><h1>音乐bot</h1><small>每日一张唱片</small></div>
+    <button id="acct-btn" class="acct-btn" type="button" aria-haspopup="dialog" aria-controls="acct-dialog"><span class="acct-dot" aria-hidden="true"></span><span id="acct-label">账号</span></button>
   </div>
   <nav class="tabs" role="tablist">
     <button class="tab" data-view="today">今日</button>
@@ -95,8 +96,11 @@
     <h2>设置</h2>
     <label class="field"><span>每日推荐数量</span><input id="set-count" type="number" min="3" max="30"></label>
     <label class="field"><span>Apple Music 地区（storefront）</span><select id="set-storefront"><option value="us">美国（US）</option></select></label>
+    <h3>账号</h3>
+    <p class="muted" id="acct-summary">访客模式</p>
+    <div class="actions-row"><button id="acct-open" class="ghost" type="button">登录 / 注册</button></div>
     <h3>数据</h3>
-    <p class="muted">所有数据只保存在本浏览器（localStorage）。可导出为 JSON 备份，或在其他设备导入。</p>
+    <p class="muted" id="data-where">所有数据只保存在本浏览器（localStorage）。可导出为 JSON 备份，或在其他设备导入。</p>
     <div class="actions-row">
       <button id="save-settings" class="primary">保存设置</button>
       <button id="export" class="ghost">导出 JSON</button>
@@ -108,9 +112,39 @@
 </main>
 
 <footer class="muted small">音乐bot · 链接在 Apple Music 中打开 · 30 秒试听由 Apple 提供</footer>
+<div id="acct-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="acct-title" hidden>
+  <div class="modal-card">
+    <button class="modal-x ghost" type="button" data-close aria-label="关闭">×</button>
+    <h2 id="acct-title">账号</h2>
+    <p id="acct-unavail" class="muted" hidden></p>
+    <form id="acct-form" novalidate hidden>
+      <div class="seg" role="tablist"><button type="button" class="seg-b on" data-mode="in" role="tab" aria-selected="true">登录</button><button type="button" class="seg-b" data-mode="up" role="tab" aria-selected="false">注册</button></div>
+      <label class="field"><span>邮箱</span><input id="acct-email-in" type="email" autocomplete="email" required></label>
+      <label class="field"><span>密码</span><input id="acct-pass" type="password" autocomplete="current-password" minlength="6" required></label>
+      <p class="muted small" id="acct-hint">登录后，口味、评分和历史会保存在账号里，换设备也能用。</p>
+      <div class="actions-row"><button id="acct-submit" class="primary" type="submit">登录</button></div>
+      <p id="acct-msg" class="acct-msg" role="alert"></p>
+    </form>
+    <div id="acct-info" hidden>
+      <p>已登录：<b id="acct-email"></b></p>
+      <p class="muted">同步状态：<span id="acct-sync">—</span></p>
+      <div class="actions-row"><button type="button" id="acct-fix" class="primary" hidden>重新登录</button> <button id="acct-logout" class="ghost" type="button">退出登录</button></div>
+      <p id="acct-info-msg" class="acct-msg" role="alert"></p>
+    </div>
+  </div>
+</div>
+<div id="acct-import" class="modal" role="dialog" aria-modal="true" aria-labelledby="acct-import-title" hidden>
+  <div class="modal-card">
+    <h2 id="acct-import-title">把本机访客数据导入这个账号吗？</h2>
+    <p class="muted" id="acct-import-desc"></p>
+    <div class="actions-row"><button id="acct-import-yes" class="primary" type="button">导入</button><button id="acct-import-no" class="ghost" type="button">不导入，从空账号开始</button></div>
+  </div>
+</div>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 <audio id="player" preload="none"></audio>
+<script src="config.js"></script>
 <script src="recommender.js"></script>
+<script src="storage.js"></script>
 <script src="ui.js"></script>
 </body>
 </html>

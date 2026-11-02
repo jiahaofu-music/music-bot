@@ -1,5 +1,5 @@
 /* 音乐bot — UI layer (ui.js). window.MusicRec (recommender.js) is the ONLY source of seeds, history and feedback.
- * localStorage 'yinyuebot.ui.v1' holds UI prefs only ({tab, banIds}). See API_CONTRACT.md. Vanilla JS, no build step. */
+ * localStorage 'yinyuebot.ui.v1' holds UI prefs only ({tab, banIds, importAsked}); engine data goes through MusicRec (guest localStorage or an account store via setStore). See API_CONTRACT.md. Vanilla JS, no build step. */
 (() => {
 'use strict';
 const $ = s => document.querySelector(s);
@@ -153,10 +153,13 @@ let busy = false;
 const canBan = () => has('dislikeArtist') && has('undislikeArtist');
 // MusicRec matches artistBans by normalized artist NAME; newer engines also take (name, {artistId, exact}) — see banOpts().
 // Split a collaboration credit into individual artists (engine's splitArtists if exposed, else local), keeping known names that contain separators.
-// Mirrors recommender.js KEEP_WHOLE + splitArtists (fallback only; MusicRec.splitArtists is preferred). qa/unit-ui.js checks the two stay identical.
-const ARTIST_KEEP = ['Tyler, The Creator', 'Earth, Wind & Fire', 'Simon & Garfunkel', 'Hall & Oates', 'Crosby, Stills, Nash & Young', 'Mumford & Sons', 'Florence + the Machine', 'Marina & The Diamonds', 'Chase & Status', 'Above & Beyond', 'Chloe x Halle', 'AC/DC', 'Belle & Sebastian', 'Iron & Wine', 'Hootie & the Blowfish', 'Brooks & Dunn', 'Dan + Shay', 'Sam & Dave', 'Peter, Bjorn and John', 'Years & Years', 'Sly & the Family Stone', 'Kool & the Gang', 'Prince & the Revolution'];
+// Mirrors recommender.js KEEP_WHOLE + splitArtists (fallback only; MusicRec.splitArtists is preferred). Synced by qa/sync-keep.js; qa/unit-ui.js checks they stay identical.
+const ARTIST_KEEP = ['Tyler, The Creator', 'Earth, Wind & Fire', 'Simon & Garfunkel', 'Hall & Oates', 'Daryl Hall & John Oates', 'Crosby, Stills, Nash & Young', 'Crosby, Stills & Nash', 'Mumford & Sons', 'Florence + the Machine', 'Florence and the Machine', 'Marina & The Diamonds', 'Marina and the Diamonds', 'Chase & Status', 'Above & Beyond', 'Chloe x Halle', 'AC/DC', 'Belle & Sebastian', 'Iron & Wine', 'Hootie & the Blowfish', 'Brooks & Dunn', 'Dan + Shay', 'Sam & Dave', 'Peter, Bjorn and John', 'Years & Years', 'Sly & the Family Stone', 'Kool & the Gang', 'Prince & the Revolution', 'Of Monsters and Men', 'Bob Marley & The Wailers', 'Tom Petty and the Heartbreakers', 'Tom Petty & the Heartbreakers', 'Echo & the Bunnymen', 'Huey Lewis & the News', 'Angus & Julia Stone', 'Big & Rich', 'Macklemore & Ryan Lewis', 'She & Him', 'Peter, Paul and Mary', 'Emerson, Lake & Palmer', 'Blood, Sweat & Tears', 'Captain & Tennille', 'Ike & Tina Turner', 'Matt and Kim', 'Christine and the Queens', 'Edward Sharpe & the Magnetic Zeros', 'Grace Potter & the Nocturnals', 'Nathaniel Rateliff & the Night Sweats', 'Bruce Springsteen & the E Street Band', 'Bob Seger & the Silver Bullet Band', 'Joan Jett & the Blackhearts', 'Katrina & the Waves', 'Martha & the Vandellas', 'Smokey Robinson & the Miracles', 'Gladys Knight & the Pips', 'Diana Ross & the Supremes', 'Derek & the Dominos', 'Siouxsie & the Banshees', 'Elvis Costello & the Attractions', 'Kenny Rogers & the First Edition', 'Tegan and Sara', 'Sonny & Cher', 'Ashford & Simpson', 'Peaches & Herb', 'Brandon & Leah', 'Coheed and Cambria', 'Hardy & Hardy', 'Lily & Madeleine', 'The Naked and Famous', 'Jack & Jack', 'Love and Rockets', 'Mike + The Mechanics', 'Me First and the Gimme Gimmes', 'Hootie and the Blowfish', 'Earth Wind & Fire', 'Simon and Garfunkel', 'DJ Jazzy Jeff & The Fresh Prince', 'Eric B. & Rakim'];
+const ARTIST_KEEP_SORTED = ARTIST_KEEP.slice().sort((a, b) => b.length - a.length);
 function splitArtistsLocal(s) { let x = String(s || ''); const keep = [];
-  ARTIST_KEEP.forEach(n => { const i = x.toLowerCase().indexOf(n.toLowerCase()); if (i >= 0) { keep.push(x.substr(i, n.length)); x = x.slice(0, i) + '\u0000' + (keep.length - 1) + '\u0000' + x.slice(i + n.length); } });
+  ARTIST_KEEP_SORTED.forEach(n => { const lx = x.toLowerCase(), ln = n.toLowerCase(); let i = -1;
+    for (let p = lx.indexOf(ln); p >= 0; p = lx.indexOf(ln, p + 1)) if (!/[\p{L}\p{N}]/u.test(lx[p - 1] || '') && !/[\p{L}\p{N}]/u.test(lx[p + ln.length] || '')) { i = p; break; }   // whole words only
+    if (i >= 0) { keep.push(x.substr(i, n.length)); x = x.slice(0, i) + '\u0000' + (keep.length - 1) + '\u0000' + x.slice(i + n.length); } });
   return x.split(/\s*(?:,|，|&|＆|、|[(\[（]?\bfeaturing\b|[(\[（]?\bfeat\b\.?|[(\[（]?\bft\b\.?|;|\s\/\s|\bwith\b|(?<=\s)[x×](?=\s+[^\s&,，、;＆(（])|\s\+\s)\s*/i)
     .map(y => y.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]).replace(/^[\s(（\[]+|[\s)）\]]+$/g, '').trim()).filter((y, i, arr) => y && arr.findIndex(z => z.toLowerCase() === y.toLowerCase()) === i); }
 const splitArtists = s => { let r = null; try { if (E && typeof E.splitArtists === 'function') r = E.splitArtists(s); } catch (e) {} r = Array.isArray(r) && r.length ? r.map(String) : splitArtistsLocal(s); return [...new Set(r.map(x => x.trim()).filter(Boolean))]; };
@@ -473,7 +476,6 @@ function toEngineData(d) {
   throw new Error('bad format');
 }
 function renderAllViews() { renderToday(); renderTaste(); renderHistory(); renderSettings(); }
-const engineKey = () => (E && E.KEY) || 'yinyuebot.v1';
 $('#import').addEventListener('change', async e => {
   const file = e.target.files[0]; e.target.value = ''; if (!file) return;
   if (!has('importData')) { alert('导入失败：推荐引擎还没就绪'); return; }
@@ -488,7 +490,8 @@ $('#import').addEventListener('change', async e => {
   const nFb = feedbackList().length; let nDays = 0; try { nDays = (E.getHistory() || []).length; } catch (e2) {}
   if (!confirm(`将替换现有 ${nFb} 条反馈、${nDays} 天历史，确定导入？`)) return;
   // 3) import; roll back the raw engine storage only if importData was called and it (or anything after it) failed
-  const KEY = engineKey(), backup = localStorage.getItem(KEY), prevCurrent = current;
+  // raw backup = exportData() of the CURRENT store (guest or account); rollback = importData(backup). No direct localStorage access.
+  let backup = null; try { backup = E.exportData(); } catch (e0) { console.warn(e0); } const prevCurrent = current;
   try {
     await E.importData(data);
     E.getHistory(); E.getFeedback(); profile();          // engine must be able to read what it imported
@@ -497,25 +500,275 @@ $('#import').addEventListener('change', async e => {
     else alert('导入成功');
   } catch (err) {
     console.warn('import failed, rolling back:', err && err.message);
-    try { if (backup === null) localStorage.removeItem(KEY); else localStorage.setItem(KEY, backup); } catch (e3) { console.warn(e3); }
-    // MusicRec re-reads localStorage on every call (no in-memory state), so restoring the key is enough
+    try { if (backup !== null) await E.importData(backup); } catch (e3) { console.warn('rollback failed', e3); }
     current = prevCurrent; try { renderAllViews(); } catch (e4) { console.warn(e4); }
     const m = err && err.message || ''; alert(/^导入失败/.test(m) ? m : '导入失败：' + (/[\u4e00-\u9fa5]/.test(m) ? m : '文件格式不对'));
   }
 });
-$('#reset').addEventListener('click', () => {
-  if (!confirm('确定清空所有口味、评分和历史？')) return;
-  try { if (E && typeof E.reset === 'function') E.reset(); else localStorage.removeItem(engineKey()); } catch (e) { console.warn(e); }
-  try { localStorage.removeItem(PREF_KEY); if (MOCK) localStorage.removeItem('yinyuebot.mock.v1'); } catch (e) {}
+$('#reset').addEventListener('click', async () => {
+  const who = acct.user ? `账号 ${acct.user.email || ''} 里` : '本机访客模式下';
+  if (!confirm(`确定清空${who}的所有口味、评分和历史？`)) return;
+  // clears the CURRENT store only (guest localStorage or the logged-in account) via the engine; never touches the other one
+  try { if (has('reset')) E.reset(); else if (has('importData')) E.importData({}); } catch (e) { console.warn(e); }
+  if (acct.store) await flushStore(acct.store);
+  // UI prefs reset too, except importAsked (per-account, per-device: don't re-ask to import guest data into an account that already chose)
+  try { const keep = prefs.importAsked; if (keep && Object.keys(keep).length) localStorage.setItem(PREF_KEY, JSON.stringify({ importAsked: keep })); else localStorage.removeItem(PREF_KEY); } catch (e) {}
   location.reload();
 });
 
 // ---------- dev-only mock implementing the MusicRec surface (?mock=1) ----------
+// ---------- 账号（Supabase 邮箱+密码，可选） ----------
+// Contract (storage.js, algorithm bot): YYBStorage.account(supabase, userId) -> Promise<store {getItem,setItem,removeItem, flush(), onSyncStatus(cb)}>,
+// YYBStorage.isEmpty(state); MusicRec.setStore(store|null) (null = back to guest localStorage 'yinyuebot.v1'). Missing pieces => accounts unavailable.
+const SB_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+const CFG = (() => { const c = window.YYB_CONFIG || {}; return { url: String(c.SUPABASE_URL || '').trim(), key: String(c.SUPABASE_ANON_KEY || '').trim() }; })();
+const acct = { state: 'off', sb: null, user: null, store: null, sync: '', offSync: null, mode: 'in', ready: null };
+const acctConfigured = () => !!(CFG.url && CFG.key);
+const acctSupported = () => has('setStore') && !!window.YYBStorage && typeof window.YYBStorage.account === 'function';
+function acctUnavailableMsg() {
+  if (!acctConfigured()) return '账号功能未配置';
+  if (!acctSupported()) return '账号功能暂不可用（缺少同步模块）';
+  return '';
+}
+const SYNC_TEXT = { saving: '保存中…', saved: '已保存', error: '同步失败', expired: '登录已失效，请重新登录', conflict: '同步冲突，请刷新' };
+const BAD_SYNC = k => k === 'error' || k === 'expired' || k === 'conflict';
+// storage.js lastError {code, fatal}: CONFLICT -> 同步冲突; fatal / auth codes -> 登录已失效; anything else -> 同步失败 (auto-retried)
+function errKind(le) { if (!le) return 'error'; const c = String(le.code || ''), m = String(le.message || '');
+  if (c === 'CONFLICT') return 'conflict';
+  if (le.fatal === true || /^(42501|401|NO_SESSION|USER_MISMATCH|PGRST30\d)$/.test(c) || /jwt/i.test(c + ' ' + m)) return 'expired';
+  return 'error'; }
+// status: storage.js 'idle' | 'saving' | 'saved' | 'error' ('remote' is an event, not a status). idle/saved with store.pending -> still 保存中.
+function syncKind(s, st) { const v = String((s && typeof s === 'object' ? (s.status || s.state) : s) || '').toLowerCase();
+  if (/err|fail|offline/.test(v)) return st ? errKind(st.lastError) : 'error';
+  if (/saved|synced|idle|ok|done|clean/.test(v)) return st && st.pending ? 'saving' : 'saved';
+  if (/sav|sync|pend|dirty|push|load|pull/.test(v)) return 'saving'; return ''; }
+function setSync(s, st) {
+  if (s === 'remote') { if (st && st === acct.store) { const k = syncKind(st.status, st); if (k) acct.sync = k; renderAcct(); scheduleRemoteRender(); } return; }
+  if (st && acct.store && st !== acct.store) return;   // a disposed / superseded store
+  const k = syncKind(s, st); if (k) acct.sync = k; renderAcct(); }
+// 'remote' (other tab / device changed the account): redraw what is on screen from the new state, keep scroll + the playing preview, never regenerate
+let remoteTimer = null;
+function scheduleRemoteRender() { clearTimeout(remoteTimer); remoteTimer = setTimeout(remoteRender, 120); }
+function remoteRender() {
+  if (!E) return; const y = window.scrollY, open = [...document.querySelectorAll('#history-list details.day')].map(d => d.open);
+  const saved = savedToday(); if (saved) current = saved;
+  if (playingId && !current.some(t => t.trackId === playingId)) stopPlayback();
+  closeBanMenu(); renderToday();
+  const tab = prefs.tab || 'today';
+  if (tab === 'history') { renderHistory(); document.querySelectorAll('#history-list details.day').forEach((d, i) => { if (i < open.length) d.open = open[i]; }); }
+  if (tab === 'settings') renderSettings(); if (tab === 'taste') renderTaste();
+  window.scrollTo(0, y); window.__remoteRenders = (window.__remoteRenders || 0) + 1;
+}
+// today's latest saved set from history (null if none) — used instead of getDaily so nothing is ever regenerated
+function savedToday() { let H = []; try { H = (has('getHistory') && E.getHistory()) || []; } catch (e) { return null; }
+  const d = Array.isArray(H) && H.find(x => x && String(x.date) === todayStr()); const sets = d && Array.isArray(d.sets) ? d.sets : [];
+  const last = sets.length ? sets[sets.length - 1] : null, tr = last && Array.isArray(last.tracks) ? last.tracks.map(normTrack).filter(Boolean) : [];
+  return tr.length ? tr : null; }
+function authErr(e) {
+  const c = String((e && e.code) || ''), m = String((e && e.message) || e || ''), st = e && e.status;
+  if (c === 'invalid_credentials' || /invalid login credentials/i.test(m)) return '邮箱或密码不对';
+  if (c === 'user_already_exists' || c === 'email_exists' || /already (been )?(registered|exists)/i.test(m)) return '这个邮箱已经注册过了，请直接登录';
+  if (c === 'weak_password' || /password should|weak password|at least \d+ char/i.test(m)) return '密码太简单：至少 6 位，建议字母加数字';
+  if (c === 'email_not_confirmed' || /email not confirmed/i.test(m)) return '这个账号还没有激活，暂时无法登录';
+  if (c === 'email_address_invalid' || c === 'validation_failed' || /invalid.*email|email.*invalid|unable to validate email/i.test(m)) return '邮箱格式不对';
+  if (c.startsWith('over_') || st === 429 || /rate limit|too many/i.test(m)) return '操作太频繁，请稍后再试';
+  if (c === 'signup_disabled' || /signups? not allowed/i.test(m)) return '暂时不开放注册';
+  if (c === 'user_banned') return '这个账号已被停用';
+  if ((e && e.name === 'AuthRetryableFetchError') || st === 0 || /failed to fetch|network|load failed|timeout|fetch/i.test(m)) return '网络连接失败，请检查网络后重试';
+  return '出错了：' + (m || '未知错误');
+}
+const withTimeout = (p, ms, msg) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(msg)), ms))]);
+function loadSupabase() {
+  if (window.supabase && typeof window.supabase.createClient === 'function') return Promise.resolve(true);
+  return new Promise(res => { const s = document.createElement('script'); s.src = SB_CDN; s.async = true; s.crossOrigin = 'anonymous';
+    const t = setTimeout(() => res(false), 15000);
+    s.onload = () => { clearTimeout(t); res(!!(window.supabase && typeof window.supabase.createClient === 'function')); };
+    s.onerror = () => { clearTimeout(t); res(false); }; document.head.appendChild(s); });
+}
+const hasSbSession = () => { try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/^sb-.+-auth-token$/.test(k || '')) return true; } } catch (e) {} return false; };
+// one-time init (only when configured + supported); resolves after the stored session (if any) is restored
+function acctInit() {
+  if (acct.ready) return acct.ready;
+  acct.ready = (async () => {
+    const why = acctUnavailableMsg(); if (why) { acct.state = 'off'; renderAcct(); return; }
+    acct.state = 'loading'; renderAcct();
+    const ok = await loadSupabase();
+    if (!ok) { acct.state = 'failed'; renderAcct(); return; }
+    try { acct.sb = window.supabase.createClient(CFG.url, CFG.key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }); }
+    catch (e) { console.warn('supabase createClient failed', e); acct.state = 'failed'; renderAcct(); return; }
+    acct.state = 'ready'; renderAcct();
+    let restored = Promise.resolve();
+    try { const r = await withTimeout(acct.sb.auth.getSession(), 10000, 'timeout'); const s = r && r.data && r.data.session; if (s && s.user) restored = requestSwitch(s.user); }
+    catch (e) { console.warn('getSession failed', e); }
+    try { acct.sb.auth.onAuthStateChange((ev, session) => {
+      if (ev === 'SIGNED_OUT') requestSwitch(null);
+      else if (session && session.user && (ev === 'SIGNED_IN' || ev === 'INITIAL_SESSION' || ev === 'USER_UPDATED' || ev === 'TOKEN_REFRESHED')) requestSwitch(session.user);
+    }); } catch (e) { console.warn(e); }
+    await restored;
+  })().catch(e => { console.warn('account init failed', e); acct.state = 'failed'; renderAcct(); });
+  return acct.ready;
+}
+// account switching: serialized; the latest request wins; switching to the account already active is a no-op
+let switchChain = Promise.resolve(), wantId;
+function requestSwitch(user) {
+  const id = user ? String(user.id) : null; wantId = id;
+  switchChain = switchChain.then(() => doSwitch(user, id)).catch(e => { console.error('account switch failed', e); setSync('error'); renderAcct(); });
+  return switchChain;
+}
+// store.flush() resolves false on failure (storage.js keeps retrying); a throw / timeout also counts as failure
+async function flushStore(st) { if (!st || typeof st.flush !== 'function') return true;
+  try { return (await withTimeout(Promise.resolve(st.flush()), 15000, 'timeout')) !== false; } catch (e) { console.warn('flush failed', e); return false; } }
+const guestStore = () => { try { return window.YYBStorage && typeof YYBStorage.guest === 'function' ? YYBStorage.guest() : null; } catch (e) { return null; } };
+const stateKey = () => (window.YYBStorage && YYBStorage.KEY) || 'yinyuebot.v1';
+window.addEventListener('pagehide', () => { if (!acct.store) return; try { (window.YYBStorage && typeof YYBStorage.flush === 'function') ? YYBStorage.flush() : acct.store.flush(); } catch (e) {} });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && acct.store) try { acct.store.flush(); } catch (e) {} });
+const curId = () => (acct.user && acct.store ? String(acct.user.id) : null);
+async function leaveAccount() {
+  if (!acct.store) return true; let ok = true;
+  setSync('saving');
+  ok = await flushStore(acct.store);
+  try { if (acct.offSync) acct.offSync(); } catch (e) {} acct.offSync = null;
+  const old = acct.store; E.setStore(guestStore()); acct.store = null; acct.user = null; acct.sync = '';
+  try { if (old && typeof old.dispose === 'function') old.dispose(); } catch (e) {}
+  return ok;
+}
+function guestHasData(state) {
+  if (!state || typeof state !== 'object') return false;
+  if (window.YYBStorage && typeof YYBStorage.isEmpty === 'function') { try { return !YYBStorage.isEmpty(state); } catch (e) {} }
+  const sd = state.seeds || {}, n = o => (o && typeof o === 'object' ? Object.keys(o).length : 0);
+  return !!((sd.genres || []).length + (sd.artists || []).length + (sd.songs || []).length + n(state.feedback) + n(state.history) + (state.replay || []).length);
+}
+function storeIsEmpty(store) {
+  let st = null; try { const raw = store && typeof store.getItem === 'function' ? store.getItem(stateKey()) : null; st = raw ? JSON.parse(raw) : null; } catch (e) {}
+  if (window.YYBStorage && typeof YYBStorage.isEmpty === 'function') { try { return !!YYBStorage.isEmpty(st); } catch (e) {} }
+  return !guestHasData(st);
+}
+async function doSwitch(user, id) {
+  if (id !== wantId) return;                                  // superseded by a newer request
+  if (curId() === id) { if (user) acct.user = user; renderAcct(); return; }
+  if (!E || !has('setStore')) return;
+  if (acct.store) await leaveAccount();                       // A -> guest (-> B): always flush first
+  if (id === null) { renderAcct(); await rerenderAll(); return; }
+  const guestRaw = has('exportData') ? E.exportData() : '';   // snapshot taken while the guest store is active
+  setSync('saving');
+  const store = await withTimeout(Promise.resolve(YYBStorage.account(acct.sb, id)), 20000, '同步超时');
+  if (id !== wantId) { await flushStore(store); try { store && store.dispose && store.dispose(); } catch (e) {} return; }
+  E.setStore(store); acct.store = store; acct.user = user;
+  try { const sub = (typeof store.onSyncStatus === 'function' ? store.onSyncStatus.bind(store) : (typeof YYBStorage.onSyncStatus === 'function' ? YYBStorage.onSyncStatus.bind(YYBStorage) : null));
+    if (sub) { const off = sub((st, s2) => setSync(st, s2 || store)); acct.offSync = typeof off === 'function' ? off : (off && typeof off.unsubscribe === 'function' ? () => off.unsubscribe() : null); } } catch (e) { console.warn(e); }
+  acct.sync = syncKind(store.status, store) || 'saved';
+  if (store.source === 'cache' || store.source === 'cache-unsynced') toast(store.source === 'cache' ? '暂时连不上服务器，先用本机缓存；恢复后会自动同步。' : '发现本机还有没上传的修改，正在补传。');
+  closeModal('#acct-dialog');
+  let guest = null; try { guest = guestRaw ? JSON.parse(guestRaw) : null; } catch (e) {}
+  prefs.importAsked = prefs.importAsked || {};
+  if (!prefs.importAsked[id] && storeIsEmpty(store) && guestHasData(guest)) {     // asked once per account on this device
+    const yes = await askImportGuest(guest); prefs.importAsked[id] = 1; savePrefs();
+    if (yes && id === wantId && curId() === id) {
+      try { await E.importData(guestRaw); toast('已把本机访客数据导入这个账号。'); } catch (e) { console.warn(e); alert('导入失败：' + (e && e.message || e)); }
+    }
+  }
+  renderAcct(); await rerenderAll();
+}
+async function rerenderAll() {
+  current = []; stopPlayback(); closeBanMenu();
+  const saved = hasTaste() ? savedToday() : null;   // today's saved set (guest after sign-out, or the account): show it, call getDaily only if there is none
+  if (saved) { current = saved; engineNotice(); setStatus(`今天的 ${current.length} 首已就绪。你的评分会让明天更准。`); }
+  renderAllViews();
+  if (noTasteData()) promptTaste('先选择喜欢的曲风/歌手，再生成今天的推荐。'); else show(prefs.tab && prefs.tab !== 'taste' ? prefs.tab : 'today');
+  if (!saved) await loadToday(); else window.__lastRender = 'saved';
+}
+// ---- modals ----
+let lastFocus = null;
+function openModal(sel) { const m = $(sel); if (!m) return; lastFocus = document.activeElement; m.hidden = false; const f = m.querySelector('input:not([hidden]),button.primary,button'); if (f) setTimeout(() => f.focus(), 0); }
+function closeModal(sel) { const m = $(sel); if (!m || m.hidden) return; m.hidden = true; if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {} }
+function askImportGuest(g) {
+  const nf = g && g.feedback ? Object.keys(g.feedback).length : 0, nd = g && g.history ? Object.keys(g.history).length : 0, sd = (g && g.seeds) || {};
+  const ns = (sd.genres || []).length + (sd.artists || []).length + (sd.songs || []).length;
+  $('#acct-import-desc').textContent = `本机访客数据：${ns} 个口味种子、${nf} 条反馈、${nd} 天历史。选「导入」会复制到这个账号；无论怎么选，本机访客数据都会原样保留。`;
+  openModal('#acct-import');
+  return new Promise(res => { const done = v => { $('#acct-import-yes').onclick = $('#acct-import-no').onclick = null; closeModal('#acct-import'); res(v); };
+    $('#acct-import-yes').onclick = () => done(true); $('#acct-import-no').onclick = () => done(false); });
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal('#acct-dialog'); });
+$('#acct-dialog').addEventListener('click', e => { if (e.target === e.currentTarget || e.target.closest('[data-close]')) closeModal('#acct-dialog'); });
+// ---- render ----
+function renderAcct() {
+  const btn = $('#acct-btn'), lab = $('#acct-label'), why = acctUnavailableMsg();
+  const failed = acct.state === 'failed', loading = acct.state === 'loading';
+  btn.classList.toggle('in', !!acct.user); btn.classList.toggle('saving', !!acct.user && acct.sync === 'saving'); btn.classList.toggle('err', !!acct.user && BAD_SYNC(acct.sync));
+  const syncT = acct.user ? (SYNC_TEXT[acct.sync] || '已登录') : '';
+  lab.textContent = why || (failed ? '账号暂不可用' : acct.user ? (acct.user.email || '已登录') : loading ? '账号…' : '登录');
+  btn.setAttribute('aria-disabled', why ? 'true' : 'false');
+  btn.title = why || (failed ? '账号服务加载失败，访客模式照常使用' : acct.user ? `${acct.user.email || ''} · ${syncT}` : '登录 / 注册');
+  const un = $('#acct-unavail'), form = $('#acct-form'), info = $('#acct-info');
+  const unMsg = why ? why + '。现在是访客模式，数据只保存在本浏览器。' : failed ? '账号服务加载失败（网络或脚本被拦截）。访客模式照常使用，数据只保存在本浏览器；可以稍后刷新再试。' : loading ? '正在加载账号服务…' : '';
+  un.hidden = !unMsg; un.textContent = unMsg;
+  form.hidden = !!unMsg || !!acct.user; info.hidden = !!unMsg || !acct.user;
+  if (acct.user) { $('#acct-email').textContent = acct.user.email || ''; const s = $('#acct-sync'); s.textContent = syncT; s.classList.toggle('err', BAD_SYNC(acct.sync));
+    const fx = $('#acct-fix'); fx.hidden = !(acct.sync === 'expired' || acct.sync === 'conflict'); fx.textContent = acct.sync === 'conflict' ? '刷新页面' : '重新登录'; }
+  $('#acct-summary').textContent = acct.user ? `已登录：${acct.user.email || ''}（${syncT}）` : (why || (failed ? '账号服务加载失败，现在是访客模式' : '访客模式（未登录）'));
+  $('#acct-open').textContent = acct.user ? '账号与同步' : '登录 / 注册'; $('#acct-open').disabled = !!why;
+  $('#data-where').textContent = acct.user ? '数据保存在你的账号里（本机有缓存），在其他设备登录同一账号即可同步。也可导出为 JSON 备份。'
+    : '所有数据只保存在本浏览器（localStorage）。可导出为 JSON 备份，或在其他设备导入。';
+}
+function setMode(m) { acct.mode = m; document.querySelectorAll('#acct-form .seg-b').forEach(b => { const on = b.dataset.mode === m; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+  $('#acct-submit').textContent = m === 'up' ? '注册' : '登录'; $('#acct-pass').autocomplete = m === 'up' ? 'new-password' : 'current-password'; acctMsg(''); }
+function acctMsg(t, ok) { const el = $('#acct-msg'); el.textContent = t || ''; el.classList.toggle('ok', !!ok); }
+function openAcct() { if (acctUnavailableMsg()) { renderAcct(); openModal('#acct-dialog'); return; } renderAcct(); openModal('#acct-dialog'); acctInit(); }
+$('#acct-btn').addEventListener('click', openAcct);
+$('#acct-open').addEventListener('click', openAcct);
+document.querySelectorAll('#acct-form .seg-b').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+$('#acct-form').addEventListener('submit', async e => {
+  e.preventDefault(); await acctInit(); if (!acct.sb) { renderAcct(); return; }
+  const email = $('#acct-email-in').value.trim(), password = $('#acct-pass').value, btn = $('#acct-submit');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { acctMsg('邮箱格式不对'); return; }
+  if (password.length < 6) { acctMsg('密码至少 6 位'); return; }
+  btn.disabled = true; acctMsg(acct.mode === 'up' ? '注册中…' : '登录中…', true);
+  try {
+    const r = acct.mode === 'up' ? await acct.sb.auth.signUp({ email, password }) : await acct.sb.auth.signInWithPassword({ email, password });
+    if (r.error) { acctMsg(authErr(r.error)); return; }
+    const d = r.data || {};
+    if (acct.mode === 'up' && d.user && Array.isArray(d.user.identities) && d.user.identities.length === 0) { acctMsg(authErr({ code: 'user_already_exists' })); return; }
+    if (!d.session) { setMode('in'); $('#acct-email-in').value = email; $('#acct-pass').value = ''; acctMsg('注册成功，请登录', true); return; }
+    $('#acct-pass').value = ''; acctMsg('登录成功', true); requestSwitch(d.session.user || d.user);   // not awaited: the import question may wait for the user
+  } catch (err) { acctMsg(authErr(err)); }
+  finally { btn.disabled = false; }
+});
+$('#acct-logout').addEventListener('click', async () => {
+  const btn = $('#acct-logout'), msg = $('#acct-info-msg'); if (!acct.store) return; btn.disabled = true; msg.textContent = '';
+  try {
+    const st = acct.store; acct.sync = 'saving'; renderAcct();
+    const ok = await flushStore(st);
+    acct.sync = syncKind(st.status, st) || (ok ? 'saved' : 'error'); renderAcct();
+    if (st.hasUnsynced === true || (st.hasUnsynced === undefined && !ok)) {   // storage.js keeps unsynced edits in this device's cache
+      const fatal = !!(st.lastError && st.lastError.fatal);
+      const q = fatal ? '登录已失效，有改动还没同步到云端。建议先点「重新登录」，同步后再退出。\n仍要现在退出吗？（改动保留在这台设备上，下次在这台设备登录时会自动上传）'
+        : '有改动还没同步到云端，下次在这台设备登录时会自动上传。\n仍要退出吗？';
+      if (!confirm(q)) { msg.textContent = fatal ? '已取消退出。可以点「重新登录」后再同步。' : '已取消退出。请检查网络后再试。'; return; }
+    }
+    wantId = null; switchChain = switchChain.then(() => leaveAccount()).catch(e => console.warn(e)); await switchChain;   // flush (again) -> setStore(null)
+    try { await acct.sb.auth.signOut(); } catch (e) { console.warn('signOut failed', e); }
+    closeModal('#acct-dialog'); renderAcct(); await rerenderAll(); toast('已退出登录，回到访客模式。');
+  } finally { btn.disabled = false; }
+});
+
+// 登录已失效 -> 重新登录: leave the account (its unsynced edits stay in this device's cache and are pushed on the next login), sign out, show the form
+$('#acct-fix').addEventListener('click', async () => {
+  if (acct.sync === 'conflict') { try { acct.store && await flushStore(acct.store); } catch (e) {} location.reload(); return; }
+  const email = (acct.user && acct.user.email) || '';
+  wantId = null; switchChain = switchChain.then(() => leaveAccount()).catch(e => console.warn(e)); await switchChain;
+  try { await acct.sb.auth.signOut(); } catch (e) { console.warn('signOut failed', e); }
+  renderAcct(); setMode('in'); $('#acct-email-in').value = email; acctMsg('请重新登录。没同步的改动保留在这台设备上，登录后会自动上传。', true);
+  openModal('#acct-dialog'); await rerenderAll();
+});
+
 function devMock() {
   const KEY = 'yinyuebot.mock.v1';
   const def = () => ({ seeds: { genres: [], artists: [], songs: [] }, settings: { storefront: 'us', count: 10 }, feedback: {}, history: {}, replay: [] });
-  const load = () => { try { return Object.assign(def(), JSON.parse(localStorage.getItem(KEY)) || {}); } catch { return def(); } };
-  const save = S => localStorage.setItem(KEY, JSON.stringify(S));
+  let mstore = localStorage;   // like MusicRec: swappable via setStore(store|null) for account tests
+  const mk = () => (mstore === localStorage ? KEY : 'yinyuebot.v1');   // storage.js account stores only sync the 'yinyuebot.v1' key
+  const load = () => { try { return Object.assign(def(), JSON.parse(mstore.getItem(mk())) || {}); } catch { return def(); } };
+  const save = S => mstore.setItem(mk(), JSON.stringify(S));
   const art = (h, l) => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="hsl(${h},35%,${l}%)"/><circle cx="210" cy="90" r="60" fill="hsl(${(h + 40) % 360},45%,60%)" opacity=".7"/></svg>`);
   let wav = '';
   const silentWav = (sec = 4, rate = 8000) => {   // short silent clip generated locally so play/ended/relay can be tested offline
@@ -556,6 +809,9 @@ function devMock() {
     },
     getHistory() { const S = load(); return Object.keys(S.history).sort().reverse().map(date => ({ date, sets: S.history[date].sets.map(s => ({ at: s.at, tracks: s.tracks.map(t => Object.assign({}, t, { feedback: S.feedback[t.trackId] || null })) })) })); },
     exportData() { return JSON.stringify(load(), null, 2); },
+    reset() { save(def()); return { ok: true }; },
+    setStore(st) { mstore = st || localStorage; return st || null; },
+    getStore() { return mstore === localStorage ? null : mstore; },
     banCalls: [],   // dev spy: [fn, name, opts]
     dislikeArtist(n, o) { this.banCalls.push(['dislikeArtist', n, o]); const S = load(); S.artistBans = S.artistBans || []; n = String(n || '').trim(); if (n && !S.artistBans.some(a => a.toLowerCase() === n.toLowerCase())) S.artistBans.push(n); save(S); return S.artistBans; },
     undislikeArtist(n, o) { this.banCalls.push(['undislikeArtist', n, o]); const S = load(); S.artistBans = (S.artistBans || []).filter(a => a.toLowerCase() !== String(n || '').toLowerCase()); save(S); return S.artistBans; },
@@ -585,10 +841,14 @@ function devMock() {
   }
   if (MOCK && !hasTaste()) saveSeeds({ genres: ['K-Pop'] });
   $('#import-replay').hidden = !has('setReplay');
-  engineNotice();
-  if (noTasteData()) promptTaste('先选择喜欢的曲风/歌手，再生成今天的推荐。');
-  else show(initialTab || 'today');
-  await loadToday();
-  window.YYBUI = { get engine() { return E; }, get current() { return current; }, nextBatch, normTrack };   // debug handle
+  engineNotice(); renderAcct();
+  // accounts: only when configured AND storage.js/setStore exist. A stored Supabase session is restored before the first render (no guest flash).
+  if (E && !acctUnavailableMsg()) { if (hasSbSession()) await withTimeout(acctInit(), 12000, 'timeout').catch(e => console.warn('session restore slow:', e.message)); else acctInit(); }
+  if (!curId()) {
+    if (noTasteData()) promptTaste('先选择喜欢的曲风/歌手，再生成今天的推荐。');
+    else show(initialTab || 'today');
+    await loadToday();
+  }
+  window.YYBUI = { get engine() { return E; }, get current() { return current; }, nextBatch, normTrack, syncKind, get store() { return acct.store; }, get account() { return { state: acct.state, user: acct.user && acct.user.email, id: curId(), sync: acct.sync }; } };   // debug handle
 })();
 })();

@@ -176,3 +176,26 @@ footer{text-align:center;padding:30px 20px 40px}
   .odo,.odo-col{transition:none!important} .relay-disc{display:none} .toast{animation:none}
   .card.playing .vinyl{box-shadow:0 0 0 2px var(--accent)}
 }
+/* ---------- 账号 ---------- */
+.acct-btn{display:inline-flex;align-items:center;gap:8px;margin-left:6px;padding:5px 12px;font-size:13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);max-width:44vw}
+.acct-btn #acct-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-btn:hover{border-color:var(--accent-dim);color:var(--fg)}
+.acct-btn[aria-disabled=true]{opacity:.7;cursor:default}
+.acct-dot{width:8px;height:8px;border-radius:50%;background:var(--line);flex:none}
+.acct-btn.in .acct-dot{background:var(--accent)}
+.acct-btn.saving .acct-dot{background:var(--accent-dim);animation:acctPulse 1s ease-in-out infinite alternate}
+.acct-btn.err .acct-dot{background:var(--bad)}
+@keyframes acctPulse{from{opacity:.35}to{opacity:1}}
+.modal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(10,9,8,.72)}
+.modal[hidden]{display:none}
+.modal-card{position:relative;width:min(420px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px 18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);background-image:repeating-radial-gradient(circle at 110% -10%,transparent 0 6px,rgba(255,255,255,.015) 6px 7px)}
+.modal-card h2{font-family:var(--serif);font-size:20px;margin:0 0 12px}
+.modal-x{position:absolute;top:10px;right:10px;width:32px;height:32px;padding:0;border-radius:50%;line-height:1}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;margin-bottom:4px}
+.seg-b{border:0;border-radius:999px;padding:5px 16px;background:transparent;color:var(--muted)}
+.seg-b.on{background:var(--accent);color:#1a150e;font-weight:600}
+.acct-msg{min-height:1.4em;margin:10px 0 0;font-size:14px;color:var(--bad)}
+.acct-msg.ok{color:var(--accent)}
+#acct-sync.err{color:var(--bad)}
+@media (prefers-reduced-motion:reduce){.acct-btn.saving .acct-dot{animation:none}}
